@@ -162,8 +162,11 @@
             <!-- Logo -->
             <a href="index.html" class="logo" data-lang="siteName">Puskesmas Audi Komotra</a>
             
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" onclick="openMobileMenu()">☰</button>
+            
             <!-- Main Navigation -->
-            <nav>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="index.html" data-lang="home">Beranda</a></li>
                     <li><a href="about.html" data-lang="about">Tentang</a></li>
@@ -206,6 +209,24 @@
             </div>
         </div>
     </header>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-header">
+                <h3>Menu</h3>
+                <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+            </div>
+            <nav class="mobile-nav">
+                <a href="index.html" class="active">Beranda</a>
+                <a href="about.html" class="active">Tentang</a>
+                <a href="services.html" class="active">Layanan</a>
+                <a href="register.html" class="active">Daftar Pasien</a>
+                <a href="feedback.html" class="active">Kritik & Saran</a>
+                <a href="login.html" class="active">Login</a>
+            </nav>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main>
@@ -292,6 +313,28 @@
     <!-- JavaScript -->
     <script src="assets/lang/translations.js"></script>
     <script>
+        // Mobile menu functions
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileNavOverlay');
+            const body = document.body;
+            
+            overlay.classList.toggle('show');
+            
+            // Prevent body scroll when menu is open
+            if (overlay.classList.contains('show')) {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = '';
+            }
+        }
+        
+        // Close mobile menu when clicking on overlay background
+        document.getElementById('mobileNavOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleMobileMenu();
+            }
+        });
+        
         // Language dropdown functions
         function toggleLanguageDropdown() {
             const dropdown = document.getElementById('languageDropdown');
@@ -402,6 +445,15 @@
                 }
             }
         });
+
+        function openMobileMenu() {
+            document.getElementById('mobileMenuOverlay').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobileMenuOverlay').classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
     </script>
 </body>
 </html>

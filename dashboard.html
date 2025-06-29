@@ -323,12 +323,48 @@
             </nav>
         </aside>
         
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-header">
+                    <h3>Menu Admin</h3>
+                    <button class="mobile-menu-close" onclick="closeMobileMenu()">✕</button>
+                </div>
+                <nav class="mobile-nav">
+                    <a href="#" class="mobile-nav-item active" onclick="showSection('dashboard'); closeMobileMenu();">
+                        <i>📊</i> <span data-lang="dashboard">Dashboard</span>
+                    </a>
+                    <a href="#" class="mobile-nav-item" onclick="showSection('patients'); closeMobileMenu();">
+                        <i>👥</i> <span data-lang="patients">Pasien</span>
+                    </a>
+                    <a href="#" class="mobile-nav-item" onclick="showSection('appointments'); closeMobileMenu();">
+                        <i>📅</i> <span data-lang="appointments">Janji Temu</span>
+                    </a>
+                    <a href="#" class="mobile-nav-item" onclick="showSection('medical-records'); closeMobileMenu();">
+                        <i>📋</i> <span data-lang="medicalRecords">Rekam Medis</span>
+                    </a>
+                    <a href="#" class="mobile-nav-item" onclick="showSection('inventory'); closeMobileMenu();">
+                        <i>💊</i> <span data-lang="inventory">Inventaris</span>
+                    </a>
+                    <a href="#" class="mobile-nav-item" onclick="showSection('reports'); closeMobileMenu();">
+                        <i>📈</i> <span data-lang="reports">Laporan</span>
+                    </a>
+                    <a href="#" class="mobile-nav-item" onclick="showSection('settings'); closeMobileMenu();">
+                        <i>⚙️</i> <span data-lang="settings">Pengaturan</span>
+                    </a>
+                    <a href="#" class="mobile-nav-item" onclick="logout(); closeMobileMenu();">
+                        <i>🚪</i> <span data-lang="logout">Logout</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+        
         <!-- Main Content -->
         <main class="main-content">
             <!-- Top Header -->
             <header class="top-header">
                 <div class="header-left">
-                    <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+                    <button class="mobile-menu-btn" onclick="openMobileMenu()">☰</button>
                     <h1 data-lang="dashboard">Dashboard</h1>
                 </div>
                 <div class="header-right">
@@ -483,6 +519,31 @@
             const sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('show');
         }
+
+        // Mobile menu functions
+        function openMobileMenu() {
+            const overlay = document.getElementById('mobileMenuOverlay');
+            overlay.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            const overlay = document.getElementById('mobileMenuOverlay');
+            overlay.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (overlay.classList.contains('show') && 
+                !overlay.contains(event.target) && 
+                !mobileMenuBtn.contains(event.target)) {
+                closeMobileMenu();
+            }
+        });
 
         function showSection(sectionName) {
             // Update active nav item

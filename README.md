@@ -1,6 +1,6 @@
 # 🏥 Website Puskesmas Audi Komotra (Timor Leste)
 
-Website statis untuk Puskesmas Audi Komotra di wilayah Timor Leste yang menyediakan informasi layanan kesehatan dan fitur pendaftaran pasien secara digital.
+Website statis untuk Puskesmas Audi Komotra di wilayah Timor Leste yang menyediakan informasi layanan kesehatan dan fitur pendaftaran pasien secara digital. **Website ini telah dioptimalkan untuk responsif di semua perangkat.**
 
 ## 🌟 Fitur Utama
 
@@ -24,6 +24,82 @@ Mendukung 3 bahasa:
 - **Unit Gawat Darurat** - Pelayanan darurat 24 jam
 - **Kesehatan Ibu & Anak** - KIA, persalinan, dan tumbuh kembang
 - **Imunisasi & KB** - Program imunisasi dan keluarga berencana
+
+## 📱 Responsive Design Features
+
+### 🎯 Mobile-First Approach
+Website ini dirancang dengan pendekatan mobile-first untuk memastikan pengalaman terbaik di semua perangkat:
+
+#### 📱 Mobile Navigation
+- **Hamburger Menu**: Menu hamburger dengan overlay slide-in dari kanan
+- **Touch-Friendly**: Tombol dan elemen yang mudah disentuh (minimum 44px)
+- **Smooth Animations**: Transisi halus untuk menu dan overlay
+- **Backdrop Blur**: Efek blur pada background saat menu terbuka
+- **Body Scroll Prevention**: Mencegah scroll body saat menu terbuka
+
+#### 📐 Responsive Breakpoints
+```css
+/* Large Tablets and Small Laptops */
+@media (max-width: 1024px) { ... }
+
+/* Tablets */
+@media (max-width: 768px) { ... }
+
+/* Mobile Phones */
+@media (max-width: 480px) { ... }
+
+/* Extra Small Mobile */
+@media (max-width: 360px) { ... }
+
+/* Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) { ... }
+```
+
+#### 🎨 Responsive Components
+
+**Header & Navigation**
+- Logo yang menyesuaikan ukuran
+- Navigation yang berubah menjadi hamburger menu di mobile
+- Language switcher yang responsif
+- User info section yang fleksibel
+
+**Grid Layouts**
+- Services grid: `grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))`
+- Stats grid: Responsif dengan 1-4 kolom berdasarkan screen size
+- Form layouts: Single column di mobile, multi-column di desktop
+
+**Forms**
+- Input fields dengan `font-size: 16px` untuk mencegah zoom di iOS
+- Touch-friendly buttons dan form elements
+- Responsive form validation messages
+- Optimized spacing untuk mobile
+
+**Tables**
+- Horizontal scroll untuk tabel di mobile
+- Responsive column widths
+- Touch-friendly table interactions
+
+**Cards & Sections**
+- Service cards yang fleksibel
+- Consistent spacing dan padding
+- Optimized untuk touch interaction
+- Smooth hover effects
+
+### 🚀 Performance Optimizations
+
+**Mobile Performance**
+- Optimized images dan assets
+- Efficient CSS media queries
+- Fast loading pada mobile networks
+- Minimal JavaScript untuk mobile
+
+**Accessibility**
+- Semantic HTML structure
+- Proper heading hierarchy
+- Alt text untuk images
+- Keyboard navigation support
+- Screen reader friendly
+- High contrast ratios
 
 ## 🗂️ Struktur Folder
 
