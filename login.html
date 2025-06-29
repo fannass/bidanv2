@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Puskesmas Audi Komotra</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23A8D5BA' d='M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z'/></svg>">
+    <style>
+        .login-container {
+            min-height: calc(100vh - 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .login-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .login-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #A8D5BA, #7CB085);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 2rem;
+            color: white;
+        }
+        
+        .login-title {
+            color: #A8D5BA;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .login-subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #A8D5BA;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #A8D5BA, #7CB085);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(168, 213, 186, 0.4);
+        }
+        
+        .forgot-password {
+            margin-top: 1rem;
+        }
+        
+        .forgot-password a {
+            color: #A8D5BA;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        
+        .signup-link {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e1e5e9;
+        }
+        
+        .signup-link a {
+            color: #A8D5BA;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-support {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .contact-support a {
+            color: #A8D5BA;
+            text-decoration: none;
+        }
+        
+        .contact-support a:hover {
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .login-box {
+                margin: 1rem;
+                padding: 2.5rem;
+            }
+            
+            .login-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo" data-lang="siteName">Puskesmas Audi Komotra</a>
+            
+            <!-- Main Navigation -->
+            <nav>
+                <ul>
+                    <li><a href="index.html" data-lang="home">Beranda</a></li>
+                    <li><a href="about.html" data-lang="about">Tentang</a></li>
+                    <li><a href="services.html" data-lang="services">Layanan</a></li>
+                    <li><a href="register.html" data-lang="register">Daftar Pasien</a></li>
+                    <li><a href="feedback.html" data-lang="feedback">Kritik & Saran</a></li>
+                    <li><a href="login.html" class="active" data-lang="login">Login</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Right Section: Language + User Info -->
+            <div class="header-right-section">
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <div class="language-dropdown-wrapper">
+                        <button class="language-current" onclick="toggleLanguageDropdown()">
+                            <span class="flag-emoji">🇮🇩</span>
+                            <span class="lang-code">ID</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option active" onclick="selectLanguage('id', '🇮🇩', 'ID')">
+                                <span class="flag-emoji">🇮🇩</span>
+                                <span class="lang-name">Bahasa Indonesia</span>
+                            </div>
+                            <div class="language-option" onclick="selectLanguage('en', '🇬🇧', 'EN')">
+                                <span class="flag-emoji">🇬🇧</span>
+                                <span class="lang-name">English</span>
+                            </div>
+                            <div class="language-option" onclick="selectLanguage('tet', '🇹🇱', 'TET')">
+                                <span class="flag-emoji">🇹🇱</span>
+                                <span class="lang-name">Tetun</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- User Info Section (will be populated by JS) -->
+                <div id="userInfoSection" class="user-info-section"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="login-container">
+            <div class="login-box">
+                <div class="login-icon">🔐</div>
+                <h1 class="login-title" data-lang="loginTitle">Login</h1>
+                <p class="login-subtitle" data-lang="loginSubtitle">Masuk ke akun Anda untuk mengakses layanan</p>
+                
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="username" data-lang="username">Username atau Email</label>
+                        <input type="text" id="username" name="username" required data-lang="usernamePlaceholder" placeholder="Username / Email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" data-lang="password">Password</label>
+                        <input type="password" id="password" name="password" required data-lang="passwordPlaceholder" placeholder="Password">
+                    </div>
+                    
+                    <button type="submit" class="login-btn" data-lang="loginButton">Masuk</button>
+                </form>
+                
+                <div class="forgot-password">
+                    <a href="#" data-lang="forgotPassword">Lupa Password?</a>
+                </div>
+                
+                <div class="signup-link">
+                    <p data-lang="noAccount">Belum punya akun?</p>
+                    <a href="signup.html" data-lang="createAccount">Daftar Akun Baru</a>
+                </div>
+                
+                <div class="contact-support">
+                    <p data-lang="needHelp">Butuh bantuan?</p>
+                    <a href="tel:+670123456789" data-lang="contactUs">Hubungi Kami</a>
+                </div>
+                
+                <!-- Demo Guide Section -->
+                <div class="demo-guide" style="margin-top: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 10px; border-left: 4px solid #0866C6;">
+                    <h3 style="color: #0866C6; margin-bottom: 1rem; font-size: 1.1rem;">📋 Demo Login Guide</h3>
+                    <div style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                        <p style="margin-bottom: 1rem;"><strong>For testing purposes, you can use these demo accounts:</strong></p>
+                        
+                        <div style="margin-bottom: 1rem;">
+                            <h4 style="color: #0866C6; margin-bottom: 0.5rem;">👨‍⚕️ Admin Account:</h4>
+                            <p style="margin: 0.25rem 0;"><strong>Username:</strong> admin</p>
+                            <p style="margin: 0.25rem 0;"><strong>Password:</strong> admin123</p>
+                            <p style="margin: 0.25rem 0; font-size: 0.8rem; color: #666;">→ Access to admin dashboard</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 1rem;">
+                            <h4 style="color: #0866C6; margin-bottom: 0.5rem;">👤 Regular User Account:</h4>
+                            <p style="margin: 0.25rem 0;"><strong>Username:</strong> user1</p>
+                            <p style="margin: 0.25rem 0;"><strong>Password:</strong> user123</p>
+                            <p style="margin: 0.25rem 0; font-size: 0.8rem; color: #666;">→ Access to user dashboard</p>
+                        </div>
+                        
+                        <div style="background: #e3f2fd; padding: 0.75rem; border-radius: 5px; margin-top: 1rem;">
+                            <p style="margin: 0; font-size: 0.85rem; color: #1976d2;">
+                                <strong>💡 Tip:</strong> You can also create new accounts using the "Create New Account" link above.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html" data-lang="about">Tentang</a>
+                <a href="services.html" data-lang="services">Layanan</a>
+                <a href="register.html" data-lang="register">Daftar Pasien</a>
+                <a href="feedback.html" data-lang="feedback">Kritik & Saran</a>
+                <a href="tel:+670123456789" data-lang="contact">Kontak</a>
+            </div>
+            <p data-lang="footerText">© 2025 Puskesmas Audi Komotra, Timor Leste. Semua hak dilindungi.</p>
+            <p><strong data-lang="emergency24">Darurat 24 Jam</strong>: +670 123 456 789</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/lang/translations.js"></script>
+    <script>
+        // Language dropdown functions
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            const currentBtn = document.querySelector('.language-current');
+            
+            dropdown.classList.toggle('show');
+            currentBtn.classList.toggle('open');
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function closeDropdown(event) {
+                if (!event.target.closest('.language-dropdown-wrapper')) {
+                    dropdown.classList.remove('show');
+                    currentBtn.classList.remove('open');
+                    document.removeEventListener('click', closeDropdown);
+                }
+            });
+        }
+        
+        function selectLanguage(langCode, flagEmoji, shortCode) {
+            // Update current display
+            const currentBtn = document.querySelector('.language-current');
+            const flagSpan = currentBtn.querySelector('.flag-emoji');
+            const langCodeSpan = currentBtn.querySelector('.lang-code');
+            
+            flagSpan.textContent = flagEmoji;
+            langCodeSpan.textContent = shortCode;
+            
+            // Update active state in dropdown
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.target.closest('.language-option').classList.add('active');
+            
+            // Close dropdown
+            document.getElementById('languageDropdown').classList.remove('show');
+            currentBtn.classList.remove('open');
+            
+            // Change language
+            changeLanguage(langCode);
+        }
+
+        // Login form handling
+        function handleLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation
+            if (!username || !password) {
+                alert(window.translations[currentLanguage].pleaseFillFields || 'Mohon isi username dan password');
+                return;
+            }
+            
+            // Check hardcoded demo accounts first
+            const demoUsers = {
+                'admin': { password: 'admin123', role: 'admin', name: 'Dr. Maria Santos' },
+                'user1': { password: 'user123', role: 'user', name: 'User Demo' }
+            };
+            
+            // Check if it's a demo account
+            if (demoUsers[username] && demoUsers[username].password === password) {
+                const user = {
+                    username: username,
+                    role: demoUsers[username].role,
+                    name: demoUsers[username].name,
+                    loginTime: new Date().toISOString()
+                };
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                
+                if (user.role === 'admin') {
+                    window.location.href = 'dashboard.html';
+                } else {
+                    window.location.href = 'user-dashboard.html';
+                }
+                return;
+            }
+            
+            // Check stored users from localStorage
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const user = users.find(u => 
+                (u.username === username || u.email === username) && u.password === password
+            );
+            
+            if (user) {
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                if (user.role === 'admin') {
+                    window.location.href = 'dashboard.html';
+                } else {
+                    window.location.href = 'user-dashboard.html';
+                }
+            } else {
+                alert(window.translations[currentLanguage].invalidCredentials || 'Username atau password salah');
+            }
+        }
+
+        // Initialize language system
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedLanguage();
+            
+            // Check if user is already logged in
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser) {
+                // Redirect based on role
+                if (currentUser.role === 'admin') {
+                    window.location.href = 'dashboard.html';
+                } else {
+                    window.location.href = 'user-dashboard.html';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

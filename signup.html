@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Akun - Puskesmas Audi Komotra</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23A8D5BA' d='M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z'/></svg>">
+    <style>
+        .signup-container {
+            min-height: calc(100vh - 200px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .signup-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .signup-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #0866C6, #2de0fc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 2rem;
+            color: white;
+        }
+        
+        .signup-title {
+            color: #0866C6;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .signup-subtitle {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #0866C6;
+        }
+        
+        .signup-btn {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #0866C6, #2de0fc);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .signup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(45, 224, 252, 0.4);
+        }
+        
+        .login-link {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e1e5e9;
+        }
+        
+        .login-link a {
+            color: #0866C6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-support {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .contact-support a {
+            color: #0866C6;
+            text-decoration: none;
+        }
+        
+        .contact-support a:hover {
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .signup-box {
+                margin: 1rem;
+                padding: 2.5rem;
+            }
+            
+            .signup-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo" data-lang="siteName">Puskesmas Audi Komotra</a>
+            
+            <!-- Main Navigation -->
+            <nav>
+                <ul>
+                    <li><a href="index.html" data-lang="home">Beranda</a></li>
+                    <li><a href="about.html" data-lang="about">Tentang</a></li>
+                    <li><a href="services.html" data-lang="services">Layanan</a></li>
+                    <li><a href="login.html" data-lang="login">Login</a></li>
+                    <li><a href="signup.html" class="active">Daftar Akun</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Right Section: Language + User Info -->
+            <div class="header-right-section">
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <div class="language-dropdown-wrapper">
+                        <button class="language-current" onclick="toggleLanguageDropdown()">
+                            <span class="flag-emoji">🇮🇩</span>
+                            <span class="lang-code">ID</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option active" onclick="selectLanguage('id', '🇮🇩', 'ID')">
+                                <span class="flag-emoji">🇮🇩</span>
+                                <span class="lang-name">Bahasa Indonesia</span>
+                            </div>
+                            <div class="language-option" onclick="selectLanguage('en', '🇬🇧', 'EN')">
+                                <span class="flag-emoji">🇬🇧</span>
+                                <span class="lang-name">English</span>
+                            </div>
+                            <div class="language-option" onclick="selectLanguage('tet', '🇹🇱', 'TET')">
+                                <span class="flag-emoji">🇹🇱</span>
+                                <span class="lang-name">Tetun</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- User Info Section (will be populated by JS) -->
+                <div id="userInfoSection" class="user-info-section"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="signup-container">
+            <div class="signup-box">
+                <div class="signup-icon">👤</div>
+                <h1 class="signup-title" data-lang="signupTitle">Daftar Akun</h1>
+                <p class="signup-subtitle" data-lang="signupSubtitle">Buat akun baru untuk mengakses layanan</p>
+                
+                <form id="signupForm" onsubmit="handleSignup(event)">
+                    <div class="form-group">
+                        <label for="fullName" data-lang="fullName">Nama Lengkap *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="username" data-lang="username">Username *</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" data-lang="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" data-lang="phone">Nomor Telepon</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="role" data-lang="role">Peran *</label>
+                        <select id="role" name="role" required>
+                            <option value="" data-lang="selectRole">Pilih Peran</option>
+                            <option value="patient" data-lang="patient">Pasien</option>
+                            <option value="family" data-lang="family">Keluarga Pasien</option>
+                            <option value="staff" data-lang="staff">Staf Puskesmas</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" data-lang="password">Password *</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword" data-lang="confirmPassword">Konfirmasi Password *</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    
+                    <button type="submit" class="signup-btn" data-lang="signupButton">Daftar</button>
+                </form>
+                
+                <div class="login-link">
+                    <p data-lang="haveAccount">Sudah punya akun?</p>
+                    <a href="login.html" data-lang="loginHere">Login di sini</a>
+                </div>
+                
+                <div class="contact-support">
+                    <p data-lang="needHelp">Butuh bantuan?</p>
+                    <a href="tel:+670123456789" data-lang="contactUs">Hubungi Kami</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html" data-lang="about">Tentang</a>
+                <a href="services.html" data-lang="services">Layanan</a>
+                <a href="register.html" data-lang="register">Daftar Pasien</a>
+                <a href="feedback.html" data-lang="feedback">Kritik & Saran</a>
+                <a href="tel:+670123456789" data-lang="contact">Kontak</a>
+            </div>
+            <p data-lang="footerText">© 2025 Puskesmas Audi Komotra, Timor Leste. Semua hak dilindungi.</p>
+            <p><strong data-lang="emergency24">Darurat 24 Jam</strong>: +670 123 456 789</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/lang/translations.js"></script>
+    <script>
+        // Language dropdown functions
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            const currentBtn = document.querySelector('.language-current');
+            
+            dropdown.classList.toggle('show');
+            currentBtn.classList.toggle('open');
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function closeDropdown(event) {
+                if (!event.target.closest('.language-dropdown-wrapper')) {
+                    dropdown.classList.remove('show');
+                    currentBtn.classList.remove('open');
+                    document.removeEventListener('click', closeDropdown);
+                }
+            });
+        }
+        
+        function selectLanguage(langCode, flagEmoji, shortCode) {
+            // Update current display
+            const currentBtn = document.querySelector('.language-current');
+            const flagSpan = currentBtn.querySelector('.flag-emoji');
+            const langCodeSpan = currentBtn.querySelector('.lang-code');
+            
+            flagSpan.textContent = flagEmoji;
+            langCodeSpan.textContent = shortCode;
+            
+            // Update active state in dropdown
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.target.closest('.language-option').classList.add('active');
+            
+            // Close dropdown
+            document.getElementById('languageDropdown').classList.remove('show');
+            currentBtn.classList.remove('open');
+            
+            // Change language
+            changeLanguage(langCode);
+        }
+
+        // Signup form handling
+        function handleSignup(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const signupData = Object.fromEntries(formData);
+            // Validate required fields
+            const requiredFields = ['fullName', 'username', 'email', 'role', 'password', 'confirmPassword'];
+            const missingFields = requiredFields.filter(field => !signupData[field]);
+            if (missingFields.length > 0) {
+                alert(translations[currentLanguage].pleaseCompleteFields || 'Please complete all required fields');
+                return;
+            }
+            // Validate password match
+            if (signupData.password !== signupData.confirmPassword) {
+                alert(translations[currentLanguage].passwordMismatch || 'Passwords do not match');
+                return;
+            }
+            // Validate password strength
+            if (signupData.password.length < 6) {
+                alert(translations[currentLanguage].passwordTooShort || 'Password must be at least 6 characters');
+                return;
+            }
+            // Get existing users
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            // Check if username or email already exists
+            const existingUser = users.find(user => 
+                user.username === signupData.username || user.email === signupData.email
+            );
+            if (existingUser) {
+                alert(translations[currentLanguage].userExists || 'Username or email already registered');
+                return;
+            }
+            // Create new user
+            const newUser = {
+                id: Date.now(),
+                fullName: signupData.fullName,
+                username: signupData.username,
+                email: signupData.email,
+                phone: signupData.phone,
+                role: signupData.role,
+                password: signupData.password,
+                createdAt: new Date().toISOString()
+            };
+            // Add to users array
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            // Show success message
+            alert(translations[currentLanguage].signupSuccess || 'Account created successfully! Please login.');
+            // Redirect to login page
+            window.location.href = 'login.html';
+        }
+
+        // Initialize language system
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedLanguage();
+            
+            // Check if user is already logged in
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser) {
+                // Redirect based on role
+                if (currentUser.role === 'admin') {
+                    window.location.href = 'dashboard.html';
+                } else {
+                    window.location.href = 'user-dashboard.html';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

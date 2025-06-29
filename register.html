@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang="registrationTitle">Registrasi Pasien - Puskesmas Audi Komotra</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%230866C6' d='M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z'/></svg>">
+    <style>
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(8, 102, 198, 0.1);
+            border: 1px solid rgba(8, 102, 198, 0.1);
+        }
+        
+        .form-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 15px;
+            border-left: 4px solid #0866C6;
+        }
+        
+        .form-section h2 {
+            color: #0866C6;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0866C6;
+            box-shadow: 0 0 0 3px rgba(8, 102, 198, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .required-field::after {
+            content: " *";
+            color: #ef4444;
+        }
+        
+        .submit-section {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #0866C6, #2de0fc);
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+        
+        .submit-btn {
+            background: white;
+            color: #0866C6;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(8, 102, 198, 0.1);
+            text-align: center;
+            border: 1px solid rgba(8, 102, 198, 0.1);
+        }
+        
+        .info-card .icon {
+            font-size: 3rem;
+            color: #0866C6;
+            margin-bottom: 1rem;
+        }
+        
+        .info-card h3 {
+            color: #0866C6;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .info-card ul {
+            text-align: left;
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+        
+        .info-card li {
+            margin-bottom: 0.5rem;
+            color: #6b7280;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #0866C6, #2de0fc);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .contact-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .contact-btn:hover {
+            background: white;
+            color: #0866C6;
+        }
+        
+        .terms-section {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .terms-section input[type="checkbox"] {
+            margin-right: 0.75rem;
+            transform: scale(1.2);
+        }
+        
+        .terms-section label {
+            font-weight: normal;
+            line-height: 1.6;
+        }
+        
+        .terms-section a {
+            color: #0866C6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .terms-section a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 2rem 1rem;
+                margin: 0 1rem;
+            }
+            
+            .form-section {
+                padding: 1.5rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo" data-lang="siteName">Puskesmas Audi Komotra</a>
+            
+            <!-- Main Navigation -->
+            <nav>
+                <ul>
+                    <li><a href="index.html" data-lang="home">Beranda</a></li>
+                    <li><a href="about.html" data-lang="about">Tentang</a></li>
+                    <li><a href="services.html" data-lang="services">Layanan</a></li>
+                    <li><a href="register.html" class="active" data-lang="register">Daftar Pasien</a></li>
+                    <li><a href="feedback.html" data-lang="feedback">Kritik & Saran</a></li>
+                    <li><a href="login.html" data-lang="login">Login</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Right Section: Language + User Info -->
+            <div class="header-right-section">
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <div class="language-dropdown-wrapper">
+                        <button class="language-current" onclick="toggleLanguageDropdown()">
+                            <span class="flag-emoji">🇮🇩</span>
+                            <span class="lang-code">ID</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option active" onclick="selectLanguage('id', '🇮🇩', 'ID')">
+                                <span class="flag-emoji">🇮🇩</span>
+                                <span class="lang-name">Bahasa Indonesia</span>
+                            </div>
+                            <div class="language-option" onclick="selectLanguage('en', '🇬🇧', 'EN')">
+                                <span class="flag-emoji">🇬🇧</span>
+                                <span class="lang-name">English</span>
+                            </div>
+                            <div class="language-option" onclick="selectLanguage('tet', '🇹🇱', 'TET')">
+                                <span class="flag-emoji">🇹🇱</span>
+                                <span class="lang-name">Tetun</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- User Info Section (will be populated by JS) -->
+                <div id="userInfoSection" class="user-info-section"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Registration Header -->
+        <section class="section">
+            <h1 data-lang="registrationTitle" class="text-center" style="color: #0866C6; margin-bottom: 2rem;">Registrasi Pasien Baru</h1>
+            <p data-lang="registrationSubtitle" class="text-center" style="font-size: 1.2rem; margin-bottom: 3rem;">
+                Daftarkan diri Anda untuk mendapatkan pelayanan kesehatan terbaik dari Puskesmas Audi Komotra
+            </p>
+        </section>
+
+        <!-- Registration Form -->
+        <section class="section">
+            <div class="form-container">
+                <form id="registrationForm" onsubmit="submitRegistration(event)">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h2>👤 <span data-lang="personalInfo">Informasi Pribadi</span></h2>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="fullName" class="required-field" data-lang="fullName">Nama Lengkap</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="dateOfBirth" class="required-field" data-lang="dateOfBirth">Tanggal Lahir</label>
+                                <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="gender" class="required-field" data-lang="gender">Jenis Kelamin</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="" data-lang="selectGender">Pilih Jenis Kelamin</option>
+                                    <option value="male" data-lang="male">Laki-laki</option>
+                                    <option value="female" data-lang="female">Perempuan</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="nationality" class="required-field" data-lang="nationality">Kewarganegaraan</label>
+                                <select id="nationality" name="nationality" required>
+                                    <option value="" data-lang="selectNationality">Pilih Kewarganegaraan</option>
+                                    <option value="timor-leste" data-lang="timorLeste">Timor-Leste</option>
+                                    <option value="indonesia" data-lang="indonesia">Indonesia</option>
+                                    <option value="other" data-lang="other">Lainnya</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="form-section">
+                        <h2>📞 <span data-lang="contactInfo">Informasi Kontak</span></h2>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="phone" class="required-field" data-lang="phone">Nomor Telepon</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" data-lang="email">Email</label>
+                                <input type="email" id="email" name="email">
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="address" class="required-field" data-lang="address">Alamat Lengkap</label>
+                                <textarea id="address" name="address" rows="3" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Contact -->
+                    <div class="form-section">
+                        <h2>🚨 <span data-lang="emergencyContact">Kontak Darurat</span></h2>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="emergencyName" class="required-field" data-lang="emergencyName">Nama Kontak Darurat</label>
+                                <input type="text" id="emergencyName" name="emergencyName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="emergencyPhone" class="required-field" data-lang="emergencyPhone">Nomor Telepon Darurat</label>
+                                <input type="tel" id="emergencyPhone" name="emergencyPhone" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="emergencyRelation" class="required-field" data-lang="emergencyRelation">Hubungan</label>
+                                <select id="emergencyRelation" name="emergencyRelation" required>
+                                    <option value="" data-lang="selectRelation">Pilih Hubungan</option>
+                                    <option value="spouse" data-lang="spouse">Suami/Istri</option>
+                                    <option value="parent" data-lang="parent">Orang Tua</option>
+                                    <option value="child" data-lang="child">Anak</option>
+                                    <option value="sibling" data-lang="sibling">Saudara</option>
+                                    <option value="friend" data-lang="friend">Teman</option>
+                                    <option value="other" data-lang="other">Lainnya</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medical Information -->
+                    <div class="form-section">
+                        <h2>🏥 <span data-lang="medicalInfo">Informasi Kesehatan</span></h2>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="bloodType" data-lang="bloodType">Golongan Darah</label>
+                                <select id="bloodType" name="bloodType">
+                                    <option value="" data-lang="selectBloodType">Pilih Golongan Darah</option>
+                                    <option value="A+" data-lang="bloodA">A+</option>
+                                    <option value="A-" data-lang="bloodA">A-</option>
+                                    <option value="B+" data-lang="bloodB">B+</option>
+                                    <option value="B-" data-lang="bloodB">B-</option>
+                                    <option value="AB+" data-lang="bloodAB">AB+</option>
+                                    <option value="AB-" data-lang="bloodAB">AB-</option>
+                                    <option value="O+" data-lang="bloodO">O+</option>
+                                    <option value="O-" data-lang="bloodO">O-</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="allergies" data-lang="allergies">Alergi</label>
+                                <input type="text" id="allergies" name="allergies" data-lang="allergiesPlaceholder" placeholder="Contoh: Penisilin, Debu">
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="medicalHistory" data-lang="medicalHistory">Riwayat Penyakit</label>
+                                <textarea id="medicalHistory" name="medicalHistory" rows="3" data-lang="medicalHistoryPlaceholder" placeholder="Riwayat penyakit yang pernah diderita"></textarea>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="currentMedication" data-lang="currentMedication">Obat yang Sedang Dikonsumsi</label>
+                                <textarea id="currentMedication" name="currentMedication" rows="2" data-lang="currentMedicationPlaceholder" placeholder="Obat-obatan yang sedang dikonsumsi"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Insurance Information -->
+                    <div class="form-section">
+                        <h2>💳 <span data-lang="insuranceInfo">Informasi Asuransi</span></h2>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="insuranceProvider" data-lang="insuranceProvider">Penyedia Asuransi</label>
+                                <select id="insuranceProvider" name="insuranceProvider">
+                                    <option value="" data-lang="selectInsurance">Pilih Asuransi</option>
+                                    <option value="none" data-lang="noInsurance">Tidak Ada Asuransi</option>
+                                    <option value="government" data-lang="governmentInsurance">Asuransi Pemerintah</option>
+                                    <option value="private" data-lang="privateInsurance">Asuransi Swasta</option>
+                                    <option value="other" data-lang="otherInsurance">Lainnya</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="insuranceNumber" data-lang="insuranceNumber">Nomor Asuransi</label>
+                                <input type="text" id="insuranceNumber" name="insuranceNumber">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms and Conditions -->
+                    <div class="terms-section">
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <div>
+                                <label for="terms">
+                                    <span data-lang="agreeTerms">Saya setuju dengan</span>
+                                    <a href="#" data-lang="termsConditions">Syarat dan Ketentuan</a>
+                                    <span data-lang="and">dan</span>
+                                    <a href="#" data-lang="privacyPolicy">Kebijakan Privasi</a>
+                                    <span data-lang="ofPuskesmas">Puskesmas Audi Komotra *</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="submit-section">
+                        <button type="submit" class="submit-btn" data-lang="submitRegistration">
+                            Daftar Sekarang
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Information Section -->
+        <section class="section">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <h2 data-lang="registrationInfo" class="text-center" style="color: #0866C6; margin-bottom: 2rem;">Informasi Pendaftaran</h2>
+                
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="icon">📋</div>
+                        <h3 data-lang="requiredDocuments">Dokumen yang Diperlukan</h3>
+                        <ul>
+                            <li data-lang="docIdCard">Kartu Identitas (KTP/Passport)</li>
+                            <li data-lang="docFamilyCard">Kartu Keluarga</li>
+                            <li data-lang="docInsurance">Kartu Asuransi (jika ada)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="icon">⏰</div>
+                        <h3 data-lang="processingTime">Waktu Pemrosesan</h3>
+                        <p data-lang="processingTimeDesc">Pendaftaran akan diproses dalam waktu 1-2 hari kerja</p>
+                        <p data-lang="notificationInfo">Anda akan dihubungi melalui telepon atau email</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="icon">💰</div>
+                        <h3 data-lang="registrationFee">Biaya Pendaftaran</h3>
+                        <p data-lang="registrationFeeDesc">Pendaftaran pasien baru GRATIS</p>
+                        <p data-lang="serviceFeeInfo">Biaya layanan sesuai dengan jenis pelayanan</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Support -->
+        <section class="section">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="contact-section">
+                    <h2 data-lang="needHelp" style="margin-bottom: 2rem;">Butuh Bantuan?</h2>
+                    <p data-lang="contactSupportDesc" style="font-size: 1.2rem; margin-bottom: 2rem;">
+                        Jika Anda mengalami kesulitan dalam proses pendaftaran, silakan hubungi kami
+                    </p>
+                    
+                    <div class="contact-buttons">
+                        <a href="tel:+670123456789" class="contact-btn" data-lang="contactUs">
+                            📞 Hubungi Kami
+                        </a>
+                        <a href="feedback.html" class="contact-btn" data-lang="sendFeedback">Kirim Feedback</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html" data-lang="about">Tentang</a>
+                <a href="services.html" data-lang="services">Layanan</a>
+                <a href="register.html" data-lang="register">Daftar Pasien</a>
+                <a href="feedback.html" data-lang="feedback">Kritik & Saran</a>
+                <a href="tel:+670123456789" data-lang="contact">Kontak</a>
+            </div>
+            <p data-lang="footerText">© 2025 Puskesmas Audi Komotra, Timor Leste. Semua hak dilindungi.</p>
+            <p><strong data-lang="emergency24">Darurat 24 Jam</strong>: +670 123 456 789</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/lang/translations.js"></script>
+    <script>
+        // Language dropdown functions
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            const currentBtn = document.querySelector('.language-current');
+            
+            dropdown.classList.toggle('show');
+            currentBtn.classList.toggle('open');
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function closeDropdown(event) {
+                if (!event.target.closest('.language-dropdown-wrapper')) {
+                    dropdown.classList.remove('show');
+                    currentBtn.classList.remove('open');
+                    document.removeEventListener('click', closeDropdown);
+                }
+            });
+        }
+        
+        function selectLanguage(langCode, flagEmoji, shortCode) {
+            // Update current display
+            const currentBtn = document.querySelector('.language-current');
+            const flagSpan = currentBtn.querySelector('.flag-emoji');
+            const langCodeSpan = currentBtn.querySelector('.lang-code');
+            
+            flagSpan.textContent = flagEmoji;
+            langCodeSpan.textContent = shortCode;
+            
+            // Update active state in dropdown
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.target.closest('.language-option').classList.add('active');
+            
+            // Close dropdown
+            document.getElementById('languageDropdown').classList.remove('show');
+            currentBtn.classList.remove('open');
+            
+            // Change language
+            changeLanguage(langCode);
+        }
+
+        // Registration form submission
+        function submitRegistration(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const registrationData = Object.fromEntries(formData);
+            
+            // Validate required fields
+            const requiredFields = ['fullName', 'dateOfBirth', 'gender', 'nationality', 'phone', 'address', 'emergencyName', 'emergencyPhone', 'emergencyRelation'];
+            const missingFields = requiredFields.filter(field => !registrationData[field]);
+            
+            if (missingFields.length > 0) {
+                alert(getCurrentTranslation('pleaseCompleteFields'));
+                return;
+            }
+            
+            // Save registration data
+            const registrations = JSON.parse(localStorage.getItem('patientRegistrations') || '[]');
+            registrationData.id = Date.now(); // Simple ID generation
+            registrationData.registrationDate = new Date().toISOString();
+            registrationData.status = 'pending';
+            
+            registrations.push(registrationData);
+            localStorage.setItem('patientRegistrations', JSON.stringify(registrations));
+            
+            // Show success message
+            alert(getCurrentTranslation('registrationSuccess'));
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Helper function to get current translation
+        function getCurrentTranslation(key) {
+            return translations[currentLanguage] && translations[currentLanguage][key] ? 
+                   translations[currentLanguage][key] : key;
+        }
+
+        // Initialize language system
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedLanguage();
+            
+            // Add fade-in animation to main content
+            const main = document.querySelector('main');
+            if (main) {
+                main.classList.add('fade-in');
+            }
+        });
+    </script>
+</body>
+</html>

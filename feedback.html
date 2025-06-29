@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang="feedbackTitle">Kritik & Saran - Puskesmas Audi Komotra</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%230866C6' d='M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z'/></svg>">
+    <style>
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(8, 102, 198, 0.1);
+            border: 1px solid rgba(8, 102, 198, 0.1);
+        }
+        
+        .form-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 15px;
+            border-left: 4px solid #0866C6;
+        }
+        
+        .form-section h2 {
+            color: #0866C6;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #374151;
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.75rem 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0866C6;
+            box-shadow: 0 0 0 3px rgba(8, 102, 198, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .required-field::after {
+            content: " *";
+            color: #ef4444;
+        }
+        
+        .rating-section {
+            margin-bottom: 2rem;
+        }
+        
+        .rating-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .rating-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .rating-stars {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-start;
+            gap: 0.25rem;
+        }
+        
+        .rating-stars input {
+            display: none;
+        }
+        
+        .rating-stars label {
+            cursor: pointer;
+            color: #ddd;
+            font-size: 1.5rem;
+            transition: color 0.2s ease;
+        }
+        
+        .rating-stars label:hover,
+        .rating-stars label:hover ~ label,
+        .rating-stars input:checked ~ label {
+            color: #ffd700;
+        }
+        
+        .overall-rating {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .overall-rating .rating-stars {
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .submit-section {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #0866C6, #2de0fc);
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+        
+        .submit-btn {
+            background: white;
+            color: #0866C6;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .guidelines-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .guideline-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(8, 102, 198, 0.1);
+            text-align: center;
+            border: 1px solid rgba(8, 102, 198, 0.1);
+        }
+        
+        .guideline-card .icon {
+            font-size: 3rem;
+            color: #0866C6;
+            margin-bottom: 1rem;
+        }
+        
+        .guideline-card h3 {
+            color: #0866C6;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #0866C6, #2de0fc);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .contact-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .contact-btn:hover {
+            background: white;
+            color: #0866C6;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            transform: scale(1.2);
+        }
+        
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 2rem 1rem;
+                margin: 0 1rem;
+            }
+            
+            .form-section {
+                padding: 1.5rem;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .rating-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo" data-lang="siteName">Puskesmas Audi Komotra</a>
+            
+            <!-- Main Navigation -->
+            <nav>
+                <ul>
+                    <li><a href="index.html" data-lang="home">Beranda</a></li>
+                    <li><a href="about.html" data-lang="about">Tentang</a></li>
+                    <li><a href="services.html" data-lang="services">Layanan</a></li>
+                    <li><a href="register.html" data-lang="register">Daftar Pasien</a></li>
+                    <li><a href="feedback.html" class="active" data-lang="feedback">Kritik & Saran</a></li>
+                    <li><a href="login.html" data-lang="login">Login</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Right Section: Language + User Info -->
+            <div class="header-right-section">
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <div class="language-dropdown-wrapper">
+                        <button class="language-current" onclick="toggleLanguageDropdown()">
+                            <span class="flag-emoji">🇮🇩</span>
+                            <span class="lang-code">ID</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option active" onclick="selectLanguage('id', '🇮🇩', 'ID')">
+                                <span class="flag-emoji">🇮🇩</span>
+                                <span class="lang-name">Bahasa Indonesia</span>
+                            </div>
+                            <div class="language-option" onclick="selectLanguage('en', '🇬🇧', 'EN')">
+                                <span class="flag-emoji">🇬🇧</span>
+                                <span class="lang-name">English</span>
+                            </div>
+                            <div class="language-option" onclick="selectLanguage('tet', '🇹🇱', 'TET')">
+                                <span class="flag-emoji">🇹🇱</span>
+                                <span class="lang-name">Tetun</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- User Info Section (will be populated by JS) -->
+                <div id="userInfoSection" class="user-info-section"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Feedback Header -->
+        <section class="section">
+            <h1 data-lang="feedbackTitle" class="text-center" style="color: #0866C6; margin-bottom: 2rem;">Kritik & Saran</h1>
+            <p data-lang="feedbackSubtitle" class="text-center" style="font-size: 1.2rem; margin-bottom: 3rem;">
+                Kami menghargai setiap masukan dari Anda untuk meningkatkan kualitas pelayanan kesehatan kami
+            </p>
+        </section>
+
+        <!-- Feedback Form -->
+        <section class="section">
+            <div class="form-container">
+                <form id="feedbackForm" onsubmit="submitFeedback(event)">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h2>👤 <span data-lang="personalInfo">Informasi Pribadi</span></h2>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name" class="required-field" data-lang="name">Nama Lengkap</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email" data-lang="email">Email</label>
+                                <input type="email" id="email" name="email">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone" data-lang="phone">Nomor Telepon</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="age" data-lang="age">Usia</label>
+                                <select id="age" name="age">
+                                    <option value="" data-lang="selectAge">Pilih Usia</option>
+                                    <option value="under18" data-lang="under18">Di bawah 18 tahun</option>
+                                    <option value="18-30" data-lang="age18to30">18-30 tahun</option>
+                                    <option value="31-50" data-lang="age31to50">31-50 tahun</option>
+                                    <option value="51-65" data-lang="age51to65">51-65 tahun</option>
+                                    <option value="over65" data-lang="over65">Di atas 65 tahun</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Information -->
+                    <div class="form-section">
+                        <h2>🏥 <span data-lang="serviceInfo">Informasi Layanan</span></h2>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="serviceType" class="required-field" data-lang="serviceType">Jenis Layanan</label>
+                                <select id="serviceType" name="serviceType" required>
+                                    <option value="" data-lang="selectService">Pilih Layanan</option>
+                                    <option value="outpatient" data-lang="outpatient">Rawat Jalan</option>
+                                    <option value="emergency" data-lang="emergency">Unit Gawat Darurat</option>
+                                    <option value="maternal" data-lang="maternal">Kesehatan Ibu & Anak</option>
+                                    <option value="immunization" data-lang="immunization">Imunisasi & KB</option>
+                                    <option value="laboratory" data-lang="laboratory">Laboratorium</option>
+                                    <option value="pharmacy" data-lang="pharmacy">Farmasi</option>
+                                    <option value="registration" data-lang="registration">Pendaftaran</option>
+                                    <option value="other" data-lang="other">Lainnya</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="visitDate" data-lang="visitDate">Tanggal Kunjungan</label>
+                                <input type="date" id="visitDate" name="visitDate">
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="staffName" data-lang="staffName">Nama Petugas (jika diketahui)</label>
+                                <input type="text" id="staffName" name="staffName" data-lang="staffNamePlaceholder" placeholder="Nama dokter, perawat, atau petugas">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feedback Content -->
+                    <div class="form-section">
+                        <h2>💬 <span data-lang="feedbackContent">Isi Feedback</span></h2>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="feedbackType" class="required-field" data-lang="feedbackType">Jenis Feedback</label>
+                                <select id="feedbackType" name="feedbackType" required onchange="toggleFeedbackFields()">
+                                    <option value="" data-lang="selectFeedbackType">Pilih Jenis Feedback</option>
+                                    <option value="complaint" data-lang="complaint">Keluhan</option>
+                                    <option value="suggestion" data-lang="suggestion">Saran</option>
+                                    <option value="praise" data-lang="praise">Pujian</option>
+                                    <option value="question" data-lang="question">Pertanyaan</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="feedbackTitle" class="required-field" data-lang="feedbackTitle">Judul Feedback</label>
+                                <input type="text" id="feedbackTitle" name="feedbackTitle" required data-lang="feedbackTitlePlaceholder" placeholder="Ringkasan singkat feedback Anda">
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="feedbackDescription" class="required-field" data-lang="feedbackDescription">Deskripsi Detail</label>
+                                <textarea id="feedbackDescription" name="feedbackDescription" rows="6" required data-lang="feedbackDescriptionPlaceholder" placeholder="Jelaskan secara detail feedback Anda"></textarea>
+                            </div>
+                            
+                            <div id="complaintFields" style="display: none;" class="form-group">
+                                <label for="complaintSeverity" data-lang="complaintSeverity">Tingkat Keparahan</label>
+                                <select id="complaintSeverity" name="complaintSeverity">
+                                    <option value="" data-lang="selectSeverity">Pilih Tingkat Keparahan</option>
+                                    <option value="low" data-lang="lowSeverity">Rendah</option>
+                                    <option value="medium" data-lang="mediumSeverity">Sedang</option>
+                                    <option value="high" data-lang="highSeverity">Tinggi</option>
+                                    <option value="critical" data-lang="criticalSeverity">Kritis</option>
+                                </select>
+                            </div>
+                            
+                            <div id="suggestionFields" style="display: none;" class="form-group">
+                                <label for="suggestionCategory" data-lang="suggestionCategory">Kategori Saran</label>
+                                <select id="suggestionCategory" name="suggestionCategory">
+                                    <option value="" data-lang="selectCategory">Pilih Kategori</option>
+                                    <option value="service" data-lang="serviceImprovement">Peningkatan Layanan</option>
+                                    <option value="facility" data-lang="facilityImprovement">Peningkatan Fasilitas</option>
+                                    <option value="staff" data-lang="staffImprovement">Peningkatan SDM</option>
+                                    <option value="process" data-lang="processImprovement">Peningkatan Proses</option>
+                                    <option value="other" data-lang="otherImprovement">Lainnya</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rating Section -->
+                    <div class="form-section">
+                        <h2>⭐ <span data-lang="ratingSection">Penilaian Layanan</span></h2>
+                        
+                        <div class="rating-grid">
+                            <div class="rating-item">
+                                <label data-lang="serviceQuality">Kualitas Layanan</label>
+                                <div class="rating-stars">
+                                    <input type="radio" name="serviceQuality" value="5" id="sq5"><label for="sq5">★</label>
+                                    <input type="radio" name="serviceQuality" value="4" id="sq4"><label for="sq4">★</label>
+                                    <input type="radio" name="serviceQuality" value="3" id="sq3"><label for="sq3">★</label>
+                                    <input type="radio" name="serviceQuality" value="2" id="sq2"><label for="sq2">★</label>
+                                    <input type="radio" name="serviceQuality" value="1" id="sq1"><label for="sq1">★</label>
+                                </div>
+                            </div>
+                            
+                            <div class="rating-item">
+                                <label data-lang="staffCourtesy">Keramahan Petugas</label>
+                                <div class="rating-stars">
+                                    <input type="radio" name="staffCourtesy" value="5" id="sc5"><label for="sc5">★</label>
+                                    <input type="radio" name="staffCourtesy" value="4" id="sc4"><label for="sc4">★</label>
+                                    <input type="radio" name="staffCourtesy" value="3" id="sc3"><label for="sc3">★</label>
+                                    <input type="radio" name="staffCourtesy" value="2" id="sc2"><label for="sc2">★</label>
+                                    <input type="radio" name="staffCourtesy" value="1" id="sc1"><label for="sc1">★</label>
+                                </div>
+                            </div>
+                            
+                            <div class="rating-item">
+                                <label data-lang="waitingTime">Waktu Tunggu</label>
+                                <div class="rating-stars">
+                                    <input type="radio" name="waitingTime" value="5" id="wt5"><label for="wt5">★</label>
+                                    <input type="radio" name="waitingTime" value="4" id="wt4"><label for="wt4">★</label>
+                                    <input type="radio" name="waitingTime" value="3" id="wt3"><label for="wt3">★</label>
+                                    <input type="radio" name="waitingTime" value="2" id="wt2"><label for="wt2">★</label>
+                                    <input type="radio" name="waitingTime" value="1" id="wt1"><label for="wt1">★</label>
+                                </div>
+                            </div>
+                            
+                            <div class="rating-item">
+                                <label data-lang="facilityCleanliness">Kebersihan Fasilitas</label>
+                                <div class="rating-stars">
+                                    <input type="radio" name="facilityCleanliness" value="5" id="fc5"><label for="fc5">★</label>
+                                    <input type="radio" name="facilityCleanliness" value="4" id="fc4"><label for="fc4">★</label>
+                                    <input type="radio" name="facilityCleanliness" value="3" id="fc3"><label for="fc3">★</label>
+                                    <input type="radio" name="facilityCleanliness" value="2" id="fc2"><label for="fc2">★</label>
+                                    <input type="radio" name="facilityCleanliness" value="1" id="fc1"><label for="fc1">★</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Overall Satisfaction -->
+                    <div class="overall-rating">
+                        <label data-lang="overallSatisfaction">Kepuasan Keseluruhan</label>
+                        <div class="rating-stars">
+                            <input type="radio" name="overallSatisfaction" value="5" id="os5"><label for="os5">★</label>
+                            <input type="radio" name="overallSatisfaction" value="4" id="os4"><label for="os4">★</label>
+                            <input type="radio" name="overallSatisfaction" value="3" id="os3"><label for="os3">★</label>
+                            <input type="radio" name="overallSatisfaction" value="2" id="os2"><label for="os2">★</label>
+                            <input type="radio" name="overallSatisfaction" value="1" id="os1"><label for="os1">★</label>
+                        </div>
+                    </div>
+
+                    <!-- Follow-up Preferences -->
+                    <div class="form-section">
+                        <h2>📞 <span data-lang="followUpPreferences">Preferensi Tindak Lanjut</span></h2>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="followUpPhone" name="followUpPhone" value="true">
+                            <label for="followUpPhone" data-lang="followUpPhone">Saya bersedia dihubungi melalui telepon</label>
+                        </div>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="followUpEmail" name="followUpEmail" value="true">
+                            <label for="followUpEmail" data-lang="followUpEmail">Saya bersedia dihubungi melalui email</label>
+                        </div>
+                        
+                        <div class="form-group" style="margin-top: 1rem;">
+                            <label for="preferredContactTime" data-lang="preferredContactTime">Waktu Kontak yang Diinginkan</label>
+                            <select id="preferredContactTime" name="preferredContactTime">
+                                <option value="" data-lang="selectContactTime">Pilih Waktu</option>
+                                <option value="morning" data-lang="morning">Pagi (08:00-12:00)</option>
+                                <option value="afternoon" data-lang="afternoon">Siang (12:00-17:00)</option>
+                                <option value="evening" data-lang="evening">Sore (17:00-20:00)</option>
+                                <option value="anytime" data-lang="anytime">Kapan saja</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="submit-section">
+                        <button type="submit" class="submit-btn" data-lang="submitFeedback">
+                            Kirim Feedback
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Feedback Guidelines -->
+        <section class="section">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <h2 data-lang="feedbackGuidelines" class="text-center" style="color: #0866C6; margin-bottom: 2rem;">Panduan Memberikan Feedback</h2>
+                
+                <div class="guidelines-cards">
+                    <div class="guideline-card">
+                        <div class="icon">💬</div>
+                        <h3 data-lang="beSpecific">Jadilah Spesifik</h3>
+                        <p data-lang="beSpecificDesc">Berikan detail yang jelas tentang pengalaman Anda</p>
+                    </div>
+                    
+                    <div class="guideline-card">
+                        <div class="icon">🤝</div>
+                        <h3 data-lang="beConstructive">Bersifat Konstruktif</h3>
+                        <p data-lang="beConstructiveDesc">Berikan saran yang dapat membantu perbaikan</p>
+                    </div>
+                    
+                    <div class="guideline-card">
+                        <div class="icon">⏰</div>
+                        <h3 data-lang="responseTime">Waktu Respon</h3>
+                        <p data-lang="responseTimeDesc">Kami akan merespon feedback dalam 2-3 hari kerja</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Information -->
+        <section class="section">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="contact-section">
+                    <h2 data-lang="needImmediateHelp" style="margin-bottom: 2rem;">Butuh Bantuan Segera?</h2>
+                    <p data-lang="contactImmediateDesc" style="font-size: 1.2rem; margin-bottom: 2rem;">
+                        Untuk masalah yang membutuhkan penanganan segera, silakan hubungi kami langsung
+                    </p>
+                    
+                    <div class="contact-buttons">
+                        <a href="tel:+670123456789" class="contact-btn" data-lang="contactUs">
+                            📞 Hubungi Kami
+                        </a>
+                        <a href="services.html" class="contact-btn" data-lang="viewServices">Lihat Layanan</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html" data-lang="about">Tentang</a>
+                <a href="services.html" data-lang="services">Layanan</a>
+                <a href="register.html" data-lang="register">Daftar Pasien</a>
+                <a href="feedback.html" data-lang="feedback">Kritik & Saran</a>
+                <a href="tel:+670123456789" data-lang="contact">Kontak</a>
+            </div>
+            <p data-lang="footerText">© 2025 Puskesmas Audi Komotra, Timor Leste. Semua hak dilindungi.</p>
+            <p><strong data-lang="emergency24">Darurat 24 Jam</strong>: +670 123 456 789</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/lang/translations.js"></script>
+    <script>
+        // Language dropdown functions
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            const currentBtn = document.querySelector('.language-current');
+            
+            dropdown.classList.toggle('show');
+            currentBtn.classList.toggle('open');
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function closeDropdown(event) {
+                if (!event.target.closest('.language-dropdown-wrapper')) {
+                    dropdown.classList.remove('show');
+                    currentBtn.classList.remove('open');
+                    document.removeEventListener('click', closeDropdown);
+                }
+            });
+        }
+        
+        function selectLanguage(langCode, flagEmoji, shortCode) {
+            // Update current display
+            const currentBtn = document.querySelector('.language-current');
+            const flagSpan = currentBtn.querySelector('.flag-emoji');
+            const langCodeSpan = currentBtn.querySelector('.lang-code');
+            
+            flagSpan.textContent = flagEmoji;
+            langCodeSpan.textContent = shortCode;
+            
+            // Update active state in dropdown
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.target.closest('.language-option').classList.add('active');
+            
+            // Close dropdown
+            document.getElementById('languageDropdown').classList.remove('show');
+            currentBtn.classList.remove('open');
+            
+            // Change language
+            changeLanguage(langCode);
+        }
+
+        // Toggle feedback fields based on type
+        function toggleFeedbackFields() {
+            const feedbackType = document.getElementById('feedbackType').value;
+            const complaintFields = document.getElementById('complaintFields');
+            const suggestionFields = document.getElementById('suggestionFields');
+            
+            // Hide all fields first
+            complaintFields.style.display = 'none';
+            suggestionFields.style.display = 'none';
+            
+            // Show relevant fields
+            if (feedbackType === 'complaint') {
+                complaintFields.style.display = 'block';
+            } else if (feedbackType === 'suggestion') {
+                suggestionFields.style.display = 'block';
+            }
+        }
+
+        // Feedback form submission
+        function submitFeedback(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const feedbackData = Object.fromEntries(formData);
+            
+            // Validate required fields
+            const requiredFields = ['name', 'serviceType', 'feedbackType', 'feedbackTitle', 'feedbackDescription'];
+            const missingFields = requiredFields.filter(field => !feedbackData[field]);
+            
+            if (missingFields.length > 0) {
+                alert(getCurrentTranslation('pleaseCompleteFields'));
+                return;
+            }
+            
+            // Save feedback data
+            const feedbacks = JSON.parse(localStorage.getItem('patientFeedbacks') || '[]');
+            feedbackData.id = Date.now(); // Simple ID generation
+            feedbackData.submissionDate = new Date().toISOString();
+            feedbackData.status = 'pending';
+            
+            feedbacks.push(feedbackData);
+            localStorage.setItem('patientFeedbacks', JSON.stringify(feedbacks));
+            
+            // Show success message
+            alert(getCurrentTranslation('feedbackSuccess'));
+            
+            // Reset form
+            event.target.reset();
+            
+            // Hide conditional fields
+            document.getElementById('complaintFields').style.display = 'none';
+            document.getElementById('suggestionFields').style.display = 'none';
+        }
+
+        // Helper function to get current translation
+        function getCurrentTranslation(key) {
+            return translations[currentLanguage] && translations[currentLanguage][key] ? 
+                   translations[currentLanguage][key] : key;
+        }
+
+        // Initialize language system
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedLanguage();
+            
+            // Add fade-in animation to main content
+            const main = document.querySelector('main');
+            if (main) {
+                main.classList.add('fade-in');
+            }
+        });
+    </script>
+</body>
+</html>

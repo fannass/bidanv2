@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang - Puskesmas Audi Komotra</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23A8D5BA' d='M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z'/></svg>">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo" data-lang="siteName">Puskesmas Audi Komotra</a>
+            
+            <!-- Main Navigation -->
+            <nav>
+                <ul>
+                    <li><a href="index.html" data-lang="home">Beranda</a></li>
+                    <li><a href="about.html" class="active" data-lang="about">Tentang</a></li>
+                    <li><a href="services.html" data-lang="services">Layanan</a></li>
+                    <li><a href="register.html" data-lang="register">Daftar Pasien</a></li>
+                    <li><a href="feedback.html" data-lang="feedback">Kritik & Saran</a></li>
+                    <li><a href="login.html" data-lang="login">Login</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Right Section: Language + User Info -->
+            <div class="header-right-section">
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <div class="language-dropdown-wrapper">
+                        <button class="language-current" onclick="toggleLanguageDropdown()">
+                            <span class="flag-emoji">🇮🇩</span>
+                            <span class="lang-code">ID</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option active" onclick="selectLanguage('id', '🇮🇩', 'ID')">
+                                <span class="flag-emoji">🇮🇩</span>
+                                <span class="lang-name">Bahasa Indonesia</span>
+                            </div>
+                            <div class="language-option" onclick="selectLanguage('en', '🇬🇧', 'EN')">
+                                <span class="flag-emoji">🇬🇧</span>
+                                <span class="lang-name">English</span>
+                            </div>
+                            <div class="language-option" onclick="selectLanguage('tet', '🇹🇱', 'TET')">
+                                <span class="flag-emoji">🇹🇱</span>
+                                <span class="lang-name">Tetun</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- User Info Section (will be populated by JS) -->
+                <div id="userInfoSection" class="user-info-section"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Header -->
+        <section class="section">
+            <h1 data-lang="aboutTitle" class="text-center" style="color: #0866C6; margin-bottom: 2rem;">Tentang Puskesmas Audi Komotra</h1>
+            
+            <!-- Hero Image Placeholder -->
+            <div style="background: linear-gradient(rgba(8, 102, 198, 0.8), rgba(45, 224, 252, 0.8)); 
+                        height: 300px; 
+                        border-radius: 15px; 
+                        display: flex; 
+                        align-items: center; 
+                        justify-content: center; 
+                        color: white; 
+                        font-size: 4rem; 
+                        margin-bottom: 3rem;">
+                🏥
+            </div>
+            
+            <!-- About Description -->
+            <div style="font-size: 1.2rem; line-height: 1.8; text-align: justify; margin-bottom: 3rem;">
+                <p data-lang="aboutDescription" style="margin-bottom: 2rem;">
+                    Puskesmas Audi Komotra berlokasi di wilayah Timor Leste dan berkomitmen memberikan pelayanan kesehatan terbaik untuk masyarakat. Kami menyediakan layanan rawat jalan dan Unit Gawat Darurat 24 jam.
+                </p>
+                
+                <p data-lang="aboutDesc1" style="margin-bottom: 2rem;">
+                    Dengan tenaga medis yang berpengalaman dan fasilitas yang memadai, kami berusaha memberikan pelayanan kesehatan yang komprehensif dan berkualitas. Puskesmas kami dilengkapi dengan peralatan medis modern untuk mendukung diagnosis dan pengobatan yang tepat.
+                </p>
+                
+                <p data-lang="aboutDesc2">
+                    Kami percaya bahwa kesehatan adalah hak setiap warga negara, oleh karena itu kami berkomitmen untuk memberikan pelayanan yang terjangkau dan mudah diakses oleh seluruh lapisan masyarakat di wilayah Audi Komotra dan sekitarnya.
+                </p>
+            </div>
+        </section>
+
+        <!-- Facilities Section -->
+        <section class="section">
+            <h2 data-lang="facilities" class="text-center" style="margin-bottom: 2rem;">Fasilitas Kami</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Outpatient Care -->
+                <div class="service-card">
+                    <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">🏥</div>
+                    <h3 data-lang="outpatient">Rawat Jalan</h3>
+                    <p data-lang="outpatientDesc">Pelayanan pemeriksaan dan pengobatan pasien tanpa menginap</p>
+                </div>
+                
+                <!-- Emergency Unit -->
+                <div class="service-card">
+                    <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">🚑</div>
+                    <h3 data-lang="emergency">Unit Gawat Darurat</h3>
+                    <p data-lang="emergencyDesc">Pelayanan darurat 24 jam untuk kasus-kasus yang membutuhkan penanganan cepat</p>
+                </div>
+                
+                <!-- Maternal & Child Health -->
+                <div class="service-card">
+                    <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">👶</div>
+                    <h3 data-lang="maternal">Kesehatan Ibu & Anak</h3>
+                    <p data-lang="maternalDesc">Pelayanan kesehatan untuk ibu hamil, melahirkan, dan kesehatan anak</p>
+                </div>
+                
+                <!-- Immunization & Family Planning -->
+                <div class="service-card">
+                    <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">💉</div>
+                    <h3 data-lang="immunization">Imunisasi & KB</h3>
+                    <p data-lang="immunizationDesc">Program imunisasi dan keluarga berencana untuk masyarakat</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Operating Hours Section -->
+        <section class="section">
+            <h2 data-lang="operatingHours" class="text-center" style="margin-bottom: 2rem;">Jam Operasional</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Outpatient Hours -->
+                <div class="service-card">
+                    <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">🏥</div>
+                    <h3 data-lang="outpatient">Rawat Jalan</h3>
+                    <p><strong data-lang="mondaySunday">Senin - Minggu</strong></p>
+                    <p data-lang="outpatientHours">08:00 - 16:00 WIT</p>
+                </div>
+                
+                <!-- Emergency Hours -->
+                <div class="service-card">
+                    <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">🚑</div>
+                    <h3 data-lang="emergency">Unit Gawat Darurat</h3>
+                    <p><strong data-lang="mondaySunday">Senin - Minggu</strong></p>
+                    <p data-lang="emergencyHours">24 Jam</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Location and Contact Information -->
+        <section class="section">
+            <h2 data-lang="locationContact" class="text-center" style="margin-bottom: 2rem;">Lokasi & Kontak</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Location Info -->
+                <div class="service-card">
+                    <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">📍</div>
+                    <h3 data-lang="location">Lokasi</h3>
+                    <p><strong data-lang="locationText">Audi Komotra, Timor Leste</strong></p>
+                    <p data-lang="address">Jl. Raya Audi Komotra<br>Timor-Leste</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;" data-lang="locationDesc">
+                        Puskesmas kami mudah diakses dengan transportasi umum dan memiliki area parkir yang cukup luas.
+                    </p>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="service-card">
+                    <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">📞</div>
+                    <h3 data-lang="contact">Kontak</h3>
+                    <p><strong data-lang="phoneLabel">Telepon:</strong> +670 123 456 789</p>
+                    <p><strong data-lang="emailLabel">Email:</strong> info@puskes-audikomotra.tl</p>
+                    <p><strong data-lang="emergency24">Darurat 24 Jam:</strong> +670 123 456 789</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;" data-lang="contactDesc">
+                        Hubungi kami kapan saja untuk keadaan darurat atau informasi lebih lanjut.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="section text-center">
+            <h2 data-lang="needHealthService" style="margin-bottom: 2rem;">Butuh Pelayanan Kesehatan?</h2>
+            <p data-lang="healthServiceDesc" style="font-size: 1.2rem; margin-bottom: 2rem;">
+                Jangan ragu untuk mendaftar atau menghubungi kami untuk mendapatkan pelayanan kesehatan terbaik.
+            </p>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="register.html" class="btn btn-primary" data-lang="register">Daftar Pasien</a>
+                <a href="services.html" class="btn" data-lang="viewServices">Lihat Layanan</a>
+                <a href="feedback.html" class="btn" data-lang="feedback">Berikan Feedback</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html" data-lang="about">Tentang</a>
+                <a href="services.html" data-lang="services">Layanan</a>
+                <a href="register.html" data-lang="register">Daftar Pasien</a>
+                <a href="feedback.html" data-lang="feedback">Kritik & Saran</a>
+                <a href="tel:+670123456789" data-lang="contact">Kontak</a>
+            </div>
+            <p data-lang="footerText">© 2025 Puskesmas Audi Komotra, Timor Leste. Semua hak dilindungi.</p>
+            <p><strong data-lang="emergency24">Darurat 24 Jam</strong>: +670 123 456 789</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/lang/translations.js"></script>
+    <script>
+        // Language dropdown functions
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            const currentBtn = document.querySelector('.language-current');
+            
+            dropdown.classList.toggle('show');
+            currentBtn.classList.toggle('open');
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function closeDropdown(event) {
+                if (!event.target.closest('.language-dropdown-wrapper')) {
+                    dropdown.classList.remove('show');
+                    currentBtn.classList.remove('open');
+                    document.removeEventListener('click', closeDropdown);
+                }
+            });
+        }
+        
+        function selectLanguage(langCode, flagEmoji, shortCode) {
+            // Update current display
+            const currentBtn = document.querySelector('.language-current');
+            const flagSpan = currentBtn.querySelector('.flag-emoji');
+            const langCodeSpan = currentBtn.querySelector('.lang-code');
+            
+            flagSpan.textContent = flagEmoji;
+            langCodeSpan.textContent = shortCode;
+            
+            // Update active state in dropdown
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.target.closest('.language-option').classList.add('active');
+            
+            // Close dropdown
+            document.getElementById('languageDropdown').classList.remove('show');
+            currentBtn.classList.remove('open');
+            
+            // Change language
+            changeLanguage(langCode);
+        }
+
+        // Initialize language system
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedLanguage();
+            
+            // Add fade-in animation to main content
+            const main = document.querySelector('main');
+            if (main) {
+                main.classList.add('fade-in');
+            }
+        });
+    </script>
+</body>
+</html>

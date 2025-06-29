@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puskesmas Audi Komotra - Beranda</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23A8D5BA' d='M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z'/></svg>">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="index.html" class="logo" data-lang="siteName">Puskesmas Audi Komotra</a>
+            
+            <!-- Main Navigation -->
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active" data-lang="home">Beranda</a></li>
+                    <li><a href="about.html" data-lang="about">Tentang</a></li>
+                    <li><a href="services.html" data-lang="services">Layanan</a></li>
+                    <li><a href="register.html" data-lang="register">Daftar Pasien</a></li>
+                    <li><a href="feedback.html" data-lang="feedback">Kritik & Saran</a></li>
+                    <li><a href="login.html" data-lang="login">Login</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Right Section: Language + User Info -->
+            <div class="header-right-section">
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <div class="language-dropdown-wrapper">
+                        <button class="language-current" onclick="toggleLanguageDropdown()">
+                            <span class="flag-emoji">🇮🇩</span>
+                            <span class="lang-code">ID</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </button>
+                        <div class="language-dropdown" id="languageDropdown">
+                            <div class="language-option active" onclick="selectLanguage('id', '🇮🇩', 'ID')">
+                                <span class="flag-emoji">🇮🇩</span>
+                                <span class="lang-name">Bahasa Indonesia</span>
+                            </div>
+                            <div class="language-option" onclick="selectLanguage('en', '🇬🇧', 'EN')">
+                                <span class="flag-emoji">🇬🇧</span>
+                                <span class="lang-name">English</span>
+                            </div>
+                            <div class="language-option" onclick="selectLanguage('tet', '🇹🇱', 'TET')">
+                                <span class="flag-emoji">🇹🇱</span>
+                                <span class="lang-name">Tetun</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- User Info Section (will be populated by JS) -->
+                <div id="userInfoSection" class="user-info-section"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 data-lang="heroTitle">Selamat Datang di Puskesmas Audi Komotra</h1>
+            <p data-lang="heroSubtitle">Melayani kesehatan masyarakat Timor Leste dengan sepenuh hati</p>
+            <a href="services.html" class="btn" data-lang="heroButton">Lihat Layanan Kami</a>
+        </section>
+
+        <!-- Services Preview Section -->
+        <section class="section">
+            <h2 data-lang="servicesTitle">Layanan Puskesmas</h2>
+            <p data-lang="servicesDescription" class="text-center mb-2">Kami menyediakan berbagai layanan kesehatan berkualitas untuk masyarakat</p>
+            
+            <div class="services-grid">
+                <!-- Rawat Jalan -->
+                <div class="service-card">
+                    <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">🏥</div>
+                    <h3 data-lang="outpatient">Rawat Jalan</h3>
+                    <p data-lang="outpatientDesc">Pelayanan pemeriksaan dan pengobatan pasien tanpa menginap</p>
+                </div>
+                
+                <!-- Unit Gawat Darurat -->
+                <div class="service-card">
+                    <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">🚑</div>
+                    <h3 data-lang="emergency">Unit Gawat Darurat</h3>
+                    <p data-lang="emergencyDesc">Pelayanan darurat 24 jam untuk kasus-kasus yang membutuhkan penanganan cepat</p>
+                </div>
+                
+                <!-- Kesehatan Ibu & Anak -->
+                <div class="service-card">
+                    <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">👶</div>
+                    <h3 data-lang="maternal">Kesehatan Ibu & Anak</h3>
+                    <p data-lang="maternalDesc">Pelayanan kesehatan untuk ibu hamil, melahirkan, dan kesehatan anak</p>
+                </div>
+                
+                <!-- Imunisasi & KB -->
+                <div class="service-card">
+                    <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">💉</div>
+                    <h3 data-lang="immunization">Imunisasi & KB</h3>
+                    <p data-lang="immunizationDesc">Program imunisasi dan keluarga berencana untuk masyarakat</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions Section -->
+        <section class="section">
+            <h2 data-lang="quickActions">Quick Actions</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">📝</div>
+                    <h3 data-lang="register">Daftar Pasien</h3>
+                    <p data-lang="registerDesc">Daftarkan diri Anda untuk mendapat layanan kesehatan</p>
+                    <a href="register.html" class="btn btn-primary mt-2" style="margin-top: 1rem;" data-lang="registerNow">Daftar Sekarang</a>
+                </div>
+                
+                <div class="service-card">
+                    <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">💬</div>
+                    <h3 data-lang="feedback">Kritik & Saran</h3>
+                    <p data-lang="feedbackDesc">Berikan masukan untuk meningkatkan pelayanan kami</p>
+                    <a href="feedback.html" class="btn btn-primary mt-2" style="margin-top: 1rem;" data-lang="giveFeedback">Berikan Feedback</a>
+                </div>
+                
+                <div class="service-card">
+                    <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">📞</div>
+                    <h3 data-lang="emergency24">Darurat 24 Jam</h3>
+                    <p data-lang="emergencyDesc">Hubungi kami untuk keadaan darurat</p>
+                    <a href="tel:+670123456789" class="btn btn-primary mt-2" style="margin-top: 1rem;" data-lang="contactNow">Hubungi Sekarang</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Information Section -->
+        <section class="section">
+            <h2 data-lang="operatingHours">Jam Operasional</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div class="service-card">
+                    <h3>🏥 <span data-lang="outpatient">Rawat Jalan</span></h3>
+                    <p><strong data-lang="mondaySunday">Senin - Minggu</strong><br><span data-lang="outpatientHours">08:00 - 16:00 WIT</span></p>
+                </div>
+                <div class="service-card">
+                    <h3>🚑 <span data-lang="emergency">Unit Gawat Darurat</span></h3>
+                    <p><strong data-lang="mondaySunday">Senin - Minggu</strong><br><span data-lang="emergencyHours">24 Jam</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section class="section">
+            <h2 data-lang="location">Lokasi</h2>
+            <div class="text-center">
+                <p><strong data-lang="locationText">Audi Komotra, Timor Leste</strong></p>
+                <p>📍 <span data-lang="address">Jl. Raya Audi Komotra, Timor-Leste</span></p>
+                <p>📞 <span data-lang="phoneLabel">Telepon</span>: +670 123 456 789</p>
+                <p>📧 <span data-lang="emailLabel">Email</span>: info@puskes-audikomotra.tl</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html" data-lang="about">Tentang</a>
+                <a href="services.html" data-lang="services">Layanan</a>
+                <a href="register.html" data-lang="register">Daftar Pasien</a>
+                <a href="feedback.html" data-lang="feedback">Kritik & Saran</a>
+                <a href="tel:+670123456789" data-lang="contact">Kontak</a>
+            </div>
+            <p data-lang="footerText">© 2025 Puskesmas Audi Komotra, Timor Leste. Semua hak dilindungi.</p>
+            <p><strong data-lang="emergency24">Darurat 24 Jam</strong>: +670 123 456 789</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/lang/translations.js"></script>
+    <script>
+        // Language dropdown functions
+        function toggleLanguageDropdown() {
+            const dropdown = document.getElementById('languageDropdown');
+            const currentBtn = document.querySelector('.language-current');
+            
+            dropdown.classList.toggle('show');
+            currentBtn.classList.toggle('open');
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function closeDropdown(event) {
+                if (!event.target.closest('.language-dropdown-wrapper')) {
+                    dropdown.classList.remove('show');
+                    currentBtn.classList.remove('open');
+                    document.removeEventListener('click', closeDropdown);
+                }
+            });
+        }
+        
+        function selectLanguage(langCode, flagEmoji, shortCode) {
+            // Update current display
+            const currentBtn = document.querySelector('.language-current');
+            const flagSpan = currentBtn.querySelector('.flag-emoji');
+            const langCodeSpan = currentBtn.querySelector('.lang-code');
+            
+            flagSpan.textContent = flagEmoji;
+            langCodeSpan.textContent = shortCode;
+            
+            // Update active state in dropdown
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.target.closest('.language-option').classList.add('active');
+            
+            // Close dropdown
+            document.getElementById('languageDropdown').classList.remove('show');
+            currentBtn.classList.remove('open');
+            
+            // Change language
+            changeLanguage(langCode);
+        }
+
+        // Initialize language system
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedLanguage();
+            
+            // Add fade-in animation to main content
+            const main = document.querySelector('main');
+            if (main) {
+                main.classList.add('fade-in');
+            }
+        });
+    </script>
+</body>
+</html>

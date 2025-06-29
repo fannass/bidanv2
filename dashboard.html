@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Puskesmas Audi Komotra</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23A8D5BA' d='M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z'/></svg>">
+    <style>
+        /* Admin Dashboard Layout */
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--neutral-100);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, var(--neutral-800), var(--neutral-900));
+            color: var(--white);
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        
+        .sidebar-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        
+        .sidebar-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            color: var(--neutral-300);
+            line-height: 1.2;
+        }
+        
+        .sidebar-nav {
+            padding: 1rem 0;
+        }
+        
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+        
+        .nav-section-title {
+            padding: 0 1.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--neutral-400);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .nav-item {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--neutral-300);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            position: relative;
+        }
+        
+        .nav-item:hover,
+        .nav-item.active {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            border-left-color: var(--primary-color);
+        }
+        
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(0, 102, 204, 0.2), transparent);
+        }
+        
+        .nav-item i {
+            width: 20px;
+            margin-right: 0.75rem;
+            text-align: center;
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            background: var(--neutral-100);
+            min-height: 100vh;
+        }
+        
+        /* Top Header */
+        .top-header {
+            background: var(--white);
+            padding: 1.25rem 2rem;
+            border-bottom: 1px solid var(--neutral-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            min-height: 70px;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .header-left h1 {
+            margin: 0;
+            color: var(--neutral-800);
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        /* Language Dropdown for Dashboard */
+        .dashboard-language-selector {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dashboard-language-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--neutral-100);
+            border: 1px solid var(--neutral-300);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--neutral-700);
+            transition: all 0.2s ease;
+        }
+        
+        .dashboard-language-btn:hover {
+            background: var(--neutral-200);
+            border-color: var(--primary-color);
+        }
+        
+        .dashboard-language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--white);
+            border: 1px solid var(--neutral-300);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            min-width: 150px;
+            z-index: 1001;
+            display: none;
+            overflow: hidden;
+        }
+        
+        .dashboard-language-dropdown.show {
+            display: block;
+            animation: fadeInDown 0.2s ease;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .dashboard-language-option {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--neutral-200);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .dashboard-language-option:last-child {
+            border-bottom: none;
+        }
+        
+        .dashboard-language-option:hover {
+            background: var(--neutral-100);
+        }
+        
+        .dashboard-language-option.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--neutral-700);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo" data-lang="siteName">Puskesmas Audi Komotra</div>
+                <div class="sidebar-subtitle" data-lang="adminDashboard">Admin Dashboard</div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title" data-lang="dashboard">Dashboard</div>
+                    <a href="#dashboard" class="nav-item active" onclick="showSection('dashboard')">
+                        <i>📊</i> <span data-lang="overview">Overview</span>
+                    </a>
+                    <a href="#patients" class="nav-item" onclick="showSection('patients')">
+                        <i>👥</i> <span data-lang="patients">Patients</span>
+                    </a>
+                    <a href="#appointments" class="nav-item" onclick="showSection('appointments')">
+                        <i>📅</i> <span data-lang="appointments">Appointments</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title" data-lang="services">Services</div>
+                    <a href="#" class="nav-item">
+                        <i>🏥</i> <span data-lang="outpatient">Outpatient</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i>🚨</i> <span data-lang="emergency">Emergency</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i>👶</i> <span data-lang="maternalCare">Maternal Care</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i>💉</i> <span data-lang="immunization">Immunization</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title" data-lang="reports">Reports</div>
+                    <a href="#" class="nav-item">
+                        <i>📈</i> <span data-lang="analytics">Analytics</span>
+                    </a>
+                    <a href="feedback.html" class="nav-item">
+                        <i>💬</i> <span data-lang="feedback">Feedback</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i>📄</i> <span data-lang="reports">Reports</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-section-title" data-lang="system">System</div>
+                    <a href="#" class="nav-item">
+                        <i>👨‍⚕️</i> <span data-lang="staff">Staff</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i>⚙️</i> <span data-lang="settings">Settings</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="logout()">
+                        <i>🚪</i> <span data-lang="logout">Logout</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+                    <h1 data-lang="dashboard">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <!-- Language Selector -->
+                    <div class="dashboard-language-selector">
+                        <button class="dashboard-language-btn" onclick="toggleDashboardLanguageDropdown()">
+                            <span class="flag-emoji">🇮🇩</span>
+                            <span id="currentLang">ID</span>
+                            <span>▼</span>
+                        </button>
+                        <div class="dashboard-language-dropdown" id="dashboardLanguageDropdown">
+                            <div class="dashboard-language-option active" onclick="changeDashboardLanguage('id', '🇮🇩', 'ID')">
+                                <span class="flag-emoji">🇮🇩</span>
+                                <span>Bahasa Indonesia</span>
+                            </div>
+                            <div class="dashboard-language-option" onclick="changeDashboardLanguage('en', '🇬🇧', 'EN')">
+                                <span class="flag-emoji">🇬🇧</span>
+                                <span>English</span>
+                            </div>
+                            <div class="dashboard-language-option" onclick="changeDashboardLanguage('tet', '🇹🇱', 'TET')">
+                                <span class="flag-emoji">🇹🇱</span>
+                                <span>Tetun</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- User Profile -->
+                    <div class="user-profile">
+                        <span>👨‍⚕️ Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content" style="padding: 2rem;">
+                <!-- Stats Cards -->
+                <div class="dashboard-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                    <div class="stat-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
+                        <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">👥</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;" data-lang="totalPatients">Total Pasien</h3>
+                        <p style="font-size: 2rem; font-weight: 700; color: #A8D5BA;">1,247</p>
+                        <p style="color: #666; font-size: 0.9rem;" data-lang="fromLastMonth">+12% dari bulan lalu</p>
+                    </div>
+                    
+                    <div class="stat-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
+                        <div style="font-size: 3rem; color: #A8D5BA; margin-bottom: 1rem;">📅</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;" data-lang="todayAppointments">Janji Temu Hari Ini</h3>
+                        <p style="font-size: 2rem; font-weight: 700; color: #A8D5BA;">45</p>
+                        <p style="color: #666; font-size: 0.9rem;" data-lang="nextAppointments">8 janji temu berikutnya</p>
+                    </div>
+                    
+                    <div class="stat-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
+                        <div style="font-size: 3rem; color: #0866C6; margin-bottom: 1rem;">🚨</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;" data-lang="emergencyCases">Kasus Darurat</h3>
+                        <p style="font-size: 2rem; font-weight: 700; color: #0866C6;">3</p>
+                        <p style="color: #666; font-size: 0.9rem;" data-lang="inLast24Hours">Dalam 24 jam terakhir</p>
+                    </div>
+                    
+                    <div class="stat-card" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
+                        <div style="font-size: 3rem; color: #0866C6; margin-bottom: 1rem;">💊</div>
+                        <h3 style="color: #333; margin-bottom: 0.5rem;" data-lang="medicineAvailable">Obat Tersedia</h3>
+                        <p style="font-size: 2rem; font-weight: 700; color: #0866C6;">89%</p>
+                        <p style="color: #666; font-size: 0.9rem;" data-lang="medicineStockSufficient">Stok obat mencukupi</p>
+                    </div>
+                </div>
+
+                <!-- Recent Activities -->
+                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+                    <h2 style="color: #333; margin-bottom: 1.5rem;" data-lang="recentActivities">Aktivitas Terbaru</h2>
+                    <div style="display: grid; gap: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                            <div style="font-size: 1.5rem;">👶</div>
+                            <div>
+                                <p style="margin: 0; font-weight: 600;" data-lang="pregnancyCheck">Pemeriksaan Ibu Hamil</p>
+                                <p style="margin: 0; color: #666; font-size: 0.9rem;">Maria Santos - <span data-lang="minutesAgo">10 menit yang lalu</span></p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                            <div style="font-size: 1.5rem;">💉</div>
+                            <div>
+                                <p style="margin: 0; font-weight: 600;" data-lang="childImmunization">Imunisasi Anak</p>
+                                <p style="margin: 0; color: #666; font-size: 0.9rem;">João Silva - <span data-lang="minutesAgo">25 menit yang lalu</span></p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                            <div style="font-size: 1.5rem;">🏥</div>
+                            <div>
+                                <p style="margin: 0; font-weight: 600;" data-lang="generalConsultation">Konsultasi Umum</p>
+                                <p style="margin: 0; color: #666; font-size: 0.9rem;">Ana Soares - <span data-lang="hoursAgo">1 jam yang lalu</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <h2 style="color: #333; margin-bottom: 1.5rem;" data-lang="quickActions">Aksi Cepat</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <button style="padding: 1rem; background: #A8D5BA; color: white; border: none; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='register.html'">
+                            📝 <span data-lang="registerNewPatient">Daftar Pasien Baru</span>
+                        </button>
+                        <button style="padding: 1rem; background: #A8D5BA; color: white; border: none; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;" onclick="window.location.href='feedback.html'">
+                            💬 <span data-lang="viewFeedback">Lihat Feedback</span>
+                        </button>
+                        <button style="padding: 1rem; background: #A8D5BA; color: white; border: none; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
+                            📊 <span data-lang="generateReport">Generate Laporan</span>
+                        </button>
+                        <button style="padding: 1rem; background: #A8D5BA; color: white; border: none; border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
+                            ⚙️ <span data-lang="settings">Pengaturan</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/lang/translations.js"></script>
+    <script>
+        // Dashboard language functions
+        function toggleDashboardLanguageDropdown() {
+            const dropdown = document.getElementById('dashboardLanguageDropdown');
+            dropdown.classList.toggle('show');
+        }
+        
+        function changeDashboardLanguage(langCode, flagEmoji, shortCode) {
+            // Update current display
+            const currentBtn = document.querySelector('.dashboard-language-btn');
+            const flagSpan = currentBtn.querySelector('.flag-emoji');
+            const langCodeSpan = document.getElementById('currentLang');
+            
+            flagSpan.textContent = flagEmoji;
+            langCodeSpan.textContent = shortCode;
+            
+            // Update active state in dropdown
+            document.querySelectorAll('.dashboard-language-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.target.closest('.dashboard-language-option').classList.add('active');
+            
+            // Close dropdown
+            document.getElementById('dashboardLanguageDropdown').classList.remove('show');
+            
+            // Change language
+            changeLanguage(langCode);
+        }
+
+        // Sidebar functions
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
+        }
+
+        function showSection(sectionName) {
+            // Update active nav item
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Here you would typically load the section content
+            console.log('Showing section:', sectionName);
+        }
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'index.html';
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedLanguage();
+            
+            // Check if user is logged in and is admin
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser || currentUser.role !== 'admin') {
+                window.location.href = 'login.html';
+            }
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                const dropdown = document.getElementById('dashboardLanguageDropdown');
+                const selector = document.querySelector('.dashboard-language-selector');
+                
+                if (!selector.contains(event.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
