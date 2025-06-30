@@ -1,6 +1,6 @@
 /*
    JavaScript untuk Multi-Language Support
-   Website Puskesmas Audi Komotra
+   Website Puskesmas COMORO
    Bahasa: Indonesia, English, Tetun (Timor Leste)
    Versi: 2.0 - Complete Multi-Language Support
 */
@@ -10,7 +10,7 @@ const translations = {
     // Bahasa Indonesia
     id: {
         // Header & Navigation
-        siteName: "Puskesmas Audi Komotra",
+        siteName: "Puskesmas COMORO",
         home: "Beranda",
         about: "Tentang",
         services: "Layanan",
@@ -20,15 +20,15 @@ const translations = {
         dashboard: "Dashboard",
         
         // Hero Section
-        heroTitle: "Selamat Datang di Puskesmas Audi Komotra",
+        heroTitle: "Selamat Datang di Puskesmas COMORO",
         heroSubtitle: "Melayani kesehatan masyarakat Timor Leste dengan sepenuh hati",
         heroButton: "Lihat Layanan Kami",
         
         // About Page
-        aboutTitle: "Tentang Puskesmas Audi Komotra",
-        aboutDescription: "Puskesmas Audi Komotra berlokasi di wilayah Timor Leste dan berkomitmen memberikan pelayanan kesehatan terbaik untuk masyarakat. Kami menyediakan layanan rawat jalan dan Unit Gawat Darurat 24 jam.",
+        aboutTitle: "Tentang Puskesmas COMORO",
+        aboutDescription: "Puskesmas COMORO berlokasi di wilayah Timor Leste dan berkomitmen memberikan pelayanan kesehatan terbaik untuk masyarakat. Kami menyediakan layanan rawat jalan dan Unit Gawat Darurat 24 jam.",
         location: "Lokasi",
-        locationText: "Audi Komotra, Timor Leste",
+        locationText: "COMORO, Timor Leste",
         facilities: "Fasilitas",
         facilitiesText: "Rawat Jalan, Unit Gawat Darurat, Kesehatan Ibu & Anak, Imunisasi & KB",
         operatingHours: "Jam Operasional",
@@ -36,7 +36,7 @@ const translations = {
         
         // Services Page
         servicesTitle: "Layanan Kesehatan",
-        servicesSubtitle: "Kami menyediakan berbagai layanan kesehatan berkualitas untuk masyarakat Audi Komotra",
+        servicesSubtitle: "Kami menyediakan berbagai layanan kesehatan berkualitas untuk masyarakat COMORO",
         servicesDescription: "Kami menyediakan berbagai layanan kesehatan berkualitas untuk masyarakat",
         outpatient: "Rawat Jalan",
         outpatientDesc: "Pelayanan pemeriksaan dan pengobatan pasien tanpa menginap",
@@ -100,7 +100,7 @@ const translations = {
         registerTitle: "Formulir Registrasi Pasien",
         registerDescription: "Silakan isi formulir di bawah ini untuk mendaftar sebagai pasien",
         registrationTitle: "Registrasi Pasien Baru",
-        registrationSubtitle: "Daftarkan diri Anda untuk mendapatkan pelayanan kesehatan terbaik dari Puskesmas Audi Komotra",
+        registrationSubtitle: "Daftarkan diri Anda untuk mendapatkan pelayanan kesehatan terbaik dari Puskesmas COMORO",
         personalInfo: "Informasi Pribadi",
         fullName: "Nama Lengkap",
         dateOfBirth: "Tanggal Lahir",
@@ -150,7 +150,7 @@ const translations = {
         insuranceNumber: "Nomor Asuransi",
         termsConditions: "Syarat dan Ketentuan",
         and: "dan",
-        ofPuskesmas: "Puskesmas Audi Komotra",
+        ofPuskesmas: "Puskesmas COMORO",
         submitRegistration: "Daftar Sekarang",
         registrationInfo: "Informasi Pendaftaran",
         requiredDocuments: "Dokumen yang Diperlukan",
@@ -284,7 +284,7 @@ const translations = {
         completed: "Selesai",
         
         // Footer
-        footerText: "© 2025 Puskesmas Audi Komotra, Timor Leste. Semua hak dilindungi.",
+        footerText: "© 2025 Puskesmas COMORO, Timor Leste. Semua hak dilindungi.",
         contact: "Kontak",
         emergency24: "Darurat 24 Jam",
         
@@ -306,7 +306,7 @@ const translations = {
         giveFeedback: "Berikan Feedback",
         contactNow: "Hubungi Sekarang",
         mondaySunday: "Senin - Minggu",
-        address: "Jl. Raya Audi Komotra, Timor-Leste",
+        address: "Jl. Raya COMORO, Timor-Leste",
         phoneLabel: "Telepon",
         emailLabel: "Email",
         registerDesc: "Daftarkan diri Anda untuk mendapat layanan kesehatan",
@@ -342,21 +342,21 @@ const translations = {
         locationDesc: "Puskesmas kami mudah diakses dengan transportasi umum dan memiliki area parkir yang cukup luas.",
         contactDesc: "Hubungi kami kapan saja untuk keadaan darurat atau informasi lebih lanjut.",
         aboutDesc1: "Dengan tenaga medis yang berpengalaman dan fasilitas yang memadai, kami berusaha memberikan pelayanan kesehatan yang komprehensif dan berkualitas. Puskesmas kami dilengkapi dengan peralatan medis modern untuk mendukung diagnosis dan pengobatan yang tepat.",
-        aboutDesc2: "Kami percaya bahwa kesehatan adalah hak setiap warga negara, oleh karena itu kami berkomitmen untuk memberikan pelayanan yang terjangkau dan mudah diakses oleh seluruh lapisan masyarakat di wilayah Audi Komotra dan sekitarnya.",
-        wouldRecommend: "Apakah Anda akan merekomendasikan Puskesmas Audi Komotra kepada orang lain? *",
+        aboutDesc2: "Kami percaya bahwa kesehatan adalah hak setiap warga negara, oleh karena itu kami berkomitmen untuk memberikan pelayanan yang terjangkau dan mudah diakses oleh seluruh lapisan masyarakat di wilayah COMORO dan sekitarnya.",
+        wouldRecommend: "Apakah Anda akan merekomendasikan Puskesmas COMORO kepada orang lain? *",
         yesDefinitely: "✅ Ya, pasti",
         maybe: "🤔 Mungkin",
         no: "❌ Tidak",
         improvementSuggestions: "Saran Perbaikan",
         improvementPlaceholder: "Apa yang bisa kami perbaiki untuk meningkatkan pelayanan?",
-        privacyAgreement: "Saya menyetujui bahwa feedback ini dapat digunakan oleh Puskesmas Audi Komotra untuk meningkatkan kualitas pelayanan. Data pribadi saya akan dijaga kerahasiaannya sesuai dengan kebijakan privasi yang berlaku.",
+        privacyAgreement: "Saya menyetujui bahwa feedback ini dapat digunakan oleh Puskesmas COMORO untuk meningkatkan kualitas pelayanan. Data pribadi saya akan dijaga kerahasiaannya sesuai dengan kebijakan privasi yang berlaku.",
         privacyPolicy: "kebijakan privasi",
         sendFeedback: "Kirim Feedback",
         otherFeedbackWays: "📞 Cara Lain Memberikan Feedback",
         phoneFeedback: "📞 Telepon",
         phoneFeedbackDesc: "+670 123 456 789\nSenin - Jumat: 08:00 - 16:00",
         emailFeedback: "📧 Email",
-        emailFeedbackDesc: "feedback@puskes-audikomotra.tl\nRespon dalam 24 jam",
+        emailFeedbackDesc: "feedback@puskes-comoro.tl\nRespon dalam 24 jam",
         directFeedback: "🏥 Langsung",
         directFeedbackDesc: "Kotak saran di lobi puskesmas\natau berbicara langsung dengan staf",
         thankYou: "🙏 Terima Kasih",
@@ -488,7 +488,7 @@ const translations = {
     // English
     en: {
         // Header & Navigation
-        siteName: "Audi Komotra Health Center",
+        siteName: "COMORO Health Center",
         home: "Home",
         about: "About",
         services: "Services",
@@ -498,15 +498,15 @@ const translations = {
         dashboard: "Dashboard",
         
         // Hero Section
-        heroTitle: "Welcome to Audi Komotra Health Center",
+        heroTitle: "Welcome to COMORO Health Center",
         heroSubtitle: "Serving the health of Timor Leste community wholeheartedly",
         heroButton: "View Our Services",
         
         // About Page
-        aboutTitle: "About Audi Komotra Health Center",
-        aboutDescription: "Audi Komotra Health Center is located in Timor Leste and is committed to providing the best healthcare services for the community. We provide outpatient services and 24-hour Emergency Unit.",
+        aboutTitle: "About COMORO Health Center",
+        aboutDescription: "COMORO Health Center is located in Timor Leste and is committed to providing the best healthcare services for the community. We provide outpatient services and 24-hour Emergency Unit.",
         location: "Location",
-        locationText: "Audi Komotra, Timor Leste",
+        locationText: "COMORO, Timor Leste",
         facilities: "Facilities",
         facilitiesText: "Outpatient Care, Emergency Unit, Maternal & Child Health, Immunization & Family Planning",
         operatingHours: "Operating Hours",
@@ -514,7 +514,7 @@ const translations = {
         
         // Services Page
         servicesTitle: "Health Services",
-        servicesSubtitle: "We provide various quality healthcare services for the Audi Komotra community",
+        servicesSubtitle: "We provide various quality healthcare services for the COMORO community",
         servicesDescription: "We provide various quality healthcare services for the community",
         outpatient: "Outpatient Care",
         outpatientDesc: "Medical examination and treatment services for patients without hospitalization",
@@ -578,7 +578,7 @@ const translations = {
         registerTitle: "Patient Registration Form",
         registerDescription: "Please fill out the form below to register as a patient",
         registrationTitle: "New Patient Registration",
-        registrationSubtitle: "Register yourself for the best healthcare services from Audi Komotra Health Center",
+        registrationSubtitle: "Register yourself for the best healthcare services from COMORO Health Center",
         personalInfo: "Personal Information",
         fullName: "Full Name",
         dateOfBirth: "Date of Birth",
@@ -628,7 +628,7 @@ const translations = {
         insuranceNumber: "Insurance Number",
         termsConditions: "Terms and Conditions",
         and: "and",
-        ofPuskesmas: "Audi Komotra Health Center",
+        ofPuskesmas: "COMORO Health Center",
         submitRegistration: "Register Now",
         registrationInfo: "Registration Information",
         requiredDocuments: "Required Documents",
@@ -762,7 +762,7 @@ const translations = {
         completed: "Completed",
         
         // Footer
-        footerText: "© 2025 Audi Komotra Health Center, Timor Leste. All rights reserved.",
+        footerText: "© 2025 COMORO Health Center, Timor Leste. All rights reserved.",
         contact: "Contact",
         emergency24: "24 Hour Emergency",
         
@@ -784,7 +784,7 @@ const translations = {
         giveFeedback: "Give Feedback",
         contactNow: "Contact Now",
         mondaySunday: "Monday - Sunday",
-        address: "Jl. Raya Audi Komotra, Timor-Leste",
+        address: "Jl. Raya COMORO, Timor-Leste",
         phoneLabel: "Phone",
         emailLabel: "Email",
         registerDesc: "Register yourself to receive healthcare services",
@@ -820,21 +820,21 @@ const translations = {
         locationDesc: "Our health center is easily accessible by public transportation and has adequate parking space.",
         contactDesc: "Contact us anytime for emergencies or further information.",
         aboutDesc1: "With experienced medical personnel and adequate facilities, we strive to provide comprehensive and quality healthcare services. Our health center is equipped with modern medical equipment to support accurate diagnosis and treatment.",
-        aboutDesc2: "We believe that health is the right of every citizen, therefore we are committed to providing affordable and easily accessible services for all levels of society in the Audi Komotra area and its surroundings.",
-        wouldRecommend: "Would you recommend Audi Komotra Health Center to others? *",
+        aboutDesc2: "We believe that health is the right of every citizen, therefore we are committed to providing affordable and easily accessible services for all levels of society in the COMORO area and its surroundings.",
+        wouldRecommend: "Would you recommend COMORO Health Center to others? *",
         yesDefinitely: "✅ Yes, definitely",
         maybe: "🤔 Maybe",
         no: "❌ No",
         improvementSuggestions: "Improvement Suggestions",
         improvementPlaceholder: "What can we improve to enhance our services?",
-        privacyAgreement: "I agree that this feedback can be used by Audi Komotra Health Center to improve service quality. My personal data will be kept confidential in accordance with applicable privacy policy.",
+        privacyAgreement: "I agree that this feedback can be used by COMORO Health Center to improve service quality. My personal data will be kept confidential in accordance with applicable privacy policy.",
         privacyPolicy: "privacy policy",
         sendFeedback: "Send Feedback",
         otherFeedbackWays: "📞 Other Ways to Give Feedback",
         phoneFeedback: "📞 Phone",
         phoneFeedbackDesc: "+670 123 456 789\nMonday - Friday: 08:00 - 16:00",
         emailFeedback: "📧 Email",
-        emailFeedbackDesc: "feedback@puskes-audikomotra.tl\nResponse within 24 hours",
+        emailFeedbackDesc: "feedback@puskes-comoro.tl\nResponse within 24 hours",
         directFeedback: "🏥 Direct",
         directFeedbackDesc: "Suggestion box in health center lobby\nor speak directly with staff",
         thankYou: "🙏 Thank You",
@@ -967,7 +967,7 @@ const translations = {
     // Tetun (Bahasa Timor Leste)
     tet: {
         // Header & Navigation
-        siteName: "Sentru Saude Audi Komotra",
+        siteName: "Sentru Saude COMORO",
         home: "Uma",
         about: "Kona-ba",
         services: "Servisu",
@@ -977,15 +977,15 @@ const translations = {
         dashboard: "Dashboard",
         
         // Hero Section
-        heroTitle: "Bem-vinda ba Sentru Saude Audi Komotra",
+        heroTitle: "Bem-vinda ba Sentru Saude COMORO",
         heroSubtitle: "Serbisu ba povu Timor-Leste nia saude ho laran tomak",
         heroButton: "Haree Ami nia Servisu",
         
         // About Page
-        aboutTitle: "Kona-ba Sentru Saude Audi Komotra",
-        aboutDescription: "Sentru Saude Audi Komotra iha Timor-Leste no kompromete atu fornese servisu saude diak liu ba komunidade. Ami fornese servisu konsulta externa no Unidade Emergencia 24 oras.",
+        aboutTitle: "Kona-ba Sentru Saude COMORO",
+        aboutDescription: "Sentru Saude COMORO iha Timor-Leste no kompromete atu fornese servisu saude diak liu ba komunidade. Ami fornese servisu konsulta externa no Unidade Emergencia 24 oras.",
         location: "Fatin",
-        locationText: "Audi Komotra, Timor-Leste",
+        locationText: "COMORO, Timor-Leste",
         facilities: "Fasilidade",
         facilitiesText: "Konsulta Externa, Unidade Emergencia, Saude Inan no Labarik, Imunizasaun no Planeamentu Familia",
         operatingHours: "Oras Servisu",
@@ -993,7 +993,7 @@ const translations = {
         
         // Services Page
         servicesTitle: "Servisu Saude",
-        servicesSubtitle: "Ami fornese servisu saude kualidade ba komunidade Audi Komotra",
+        servicesSubtitle: "Ami fornese servisu saude kualidade ba komunidade COMORO",
         servicesDescription: "Ami fornese servisu saude kualidade ba komunidade",
         outpatient: "Konsulta Externa",
         outpatientDesc: "Servisu examina no tratamentu ba moras sira la presiza toba iha ospital",
@@ -1107,7 +1107,7 @@ const translations = {
         insuranceNumber: "Numeru Asuransi",
         termsConditions: "Termu no kondisaun",
         and: "ka",
-        ofPuskesmas: "Sentru Saude Audi Komotra",
+        ofPuskesmas: "Sentru Saude COMORO",
         submitRegistration: "Rejistu Agora",
         registrationInfo: "Informasaun Rejistu",
         requiredDocuments: "Dokumentu ne'ebe presiza",

@@ -1,6 +1,6 @@
-# 🏥 Website Puskesmas Audi Komotra (Timor Leste)
+# 🏥 Website Puskesmas COMORO (Timor Leste)
 
-Website statis untuk Puskesmas Audi Komotra di wilayah Timor Leste yang menyediakan informasi layanan kesehatan dan fitur pendaftaran pasien secara digital. **Website ini telah dioptimalkan untuk responsif di semua perangkat.**
+Website statis untuk Puskesmas COMORO di wilayah Timor Leste yang menyediakan informasi layanan kesehatan dan fitur pendaftaran pasien secara digital. **Website ini telah dioptimalkan untuk responsif di semua perangkat.**
 
 ## 🌟 Fitur Utama
 
@@ -104,7 +104,7 @@ Website ini dirancang dengan pendekatan mobile-first untuk memastikan pengalaman
 ## 🗂️ Struktur Folder
 
 ```
-bidan-komotra/
+bidan-comoro/
 ├── index.html           # Halaman beranda
 ├── about.html           # Halaman tentang puskesmas
 ├── services.html        # Daftar layanan
@@ -275,17 +275,17 @@ Untuk implementasi nyata diperlukan:
 
 ## 🚑 Kontak Darurat
 
-**Puskesmas Audi Komotra**
-- 📍 Audi Komotra, Timor-Leste
+**Puskesmas COMORO**
+- 📍 COMORO, Timor-Leste
 - 📞 +670 123 456 789 (24 Jam)
-- 📧 info@puskes-audikomotra.tl
+- 📧 info@puskes-comoro.tl
 
 ## 📄 Lisensi
 
-© 2025 Puskesmas Audi Komotra, Timor Leste. 
+© 2025 Puskesmas COMORO, Timor Leste. 
 Website ini dibuat untuk keperluan edukasi dan demo.
 
 ---
 
 
-**Terima kasih telah menggunakan website Puskesmas Audi Komotra!** 🏥❤️
+**Terima kasih telah menggunakan website Puskesmas COMORO!** 🏥❤️
